@@ -70,8 +70,6 @@ include_once('includes/loader.php')
 			</div>
 
 		</div>
-    
-   
 	
 
 	
