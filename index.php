@@ -30,8 +30,9 @@ include_once('includes/loader.php')
 
 
 				
-					<form action="treatments/" method="POST">
+					<form action="treatments/login.php" method="POST">
 
+						<!-- email name = email -->
 						<div class="form-group">
 							<label for="exampleInputUseremail" class="sr-only">E-mail</label>
 							<div class="position-relative has-icon-right">
@@ -42,6 +43,7 @@ include_once('includes/loader.php')
 							</div>
 						</div>
 						
+						<!-- password name = password -->
 						<div class="form-group">
 							<label for="exampleInputPassword" class="sr-only">Mot de passe</label>
 							<div class="position-relative has-icon-right">
@@ -51,8 +53,8 @@ include_once('includes/loader.php')
 								</div>
 							</div>
 						</div>
-						
-						<button type="button" class="btn btn-light btn-block">Se Connecter</button>
+						<!-- submit = btn_validate -->
+						<input type="submit" name="btn_validate" class="btn btn-light btn-block">
 								
 					</form>
 
@@ -63,7 +65,7 @@ include_once('includes/loader.php')
 
 
 
-					
+
 				</div>
 			</div>
 
