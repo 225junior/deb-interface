@@ -23,7 +23,7 @@ include_once('includes/loader.php')
 
 		if(	$user->password == $_POST['password'] )	{
 			$_SESSION['auth'] = $user;
-			$_SERVER['flash']['success'] = 'Vous Êtes Connecté';	
+			$_SESSION['flash']['success'] = 'Vous Êtes Connecté';	
 			header('Location:dashboard.php');
 			
 			exit();
@@ -51,7 +51,24 @@ include_once('includes/loader.php')
 				<div class="card-title text-uppercase text-center py-3">Se Connecter</div>
 					
 
-
+				<?php if (!empty($_SESSION['flash']['success'])) { ?>
+				
+					<div class="alert alert-success alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert">
+							<font style="vertical-align: inherit;">
+								<font style="vertical-align: inherit;">×</font>
+							</font>
+						</button>
+						<div class="alert-message">
+							<span>
+								<font style="vertical-align: inherit;">
+									<font style="vertical-align: inherit;"><?= $_SESSION['flash']['success'] ?> <br></font>
+								</font>
+							</span>
+						</div>
+					</div>
+					
+				<?php } $_SESSION['flash'] = null; ?>
 
 
 

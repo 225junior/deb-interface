@@ -28,57 +28,81 @@ include_once('includes/loader.php')
   <div class="content-wrapper">
     <div class="container-fluid">
 
-  <!--Start Dashboard Content-->
-<?php
-	debug($_SESSION);
-?>
-	
-<div class="row">
-	<div class="col-12 col-lg-12">
-		<div class="card mt-3">
-			<div class="card-content">
-				<div class="row row-group m-0">
-						<div class="col-12 col-lg-6 col-xl-3 border-light">
-							<div class="card-body">
-								<h5 class="text-white mb-0">9526 <span class="float-right"><i class="fa fa-shopping-cart"></i></span></h5>
-								<div class="progress my-3" style="height:3px;">
-									<div class="progress-bar" style="width:55%"></div>
+
+
+	 
+
+<!--Start Dashboard Content-->
+		<?php
+			debug($_SESSION);
+		?>
+
+		<?php if (!empty($_SESSION['flash'])) { ?>
+				
+			<div class="alert alert-success alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">×</font>
+					</font>
+				</button>
+				<div class="alert-message">
+					<span>
+						<font style="vertical-align: inherit;">
+							<font style="vertical-align: inherit;">Connexion Reussie! <br></font>
+						</font>
+					</span>
+				</div>
+			</div>
+			
+		<?php } $_SESSION['flash'] = null; ?>
+
+
+	<div class="row">
+		<div class="col-12 col-lg-12">
+			<div class="card mt-3">
+				<div class="card-content">
+					<div class="row row-group m-0">
+							<div class="col-12 col-lg-6 col-xl-3 border-light">
+								<div class="card-body">
+									<h5 class="text-white mb-0">9526 <span class="float-right"><i class="fa fa-shopping-cart"></i></span></h5>
+									<div class="progress my-3" style="height:3px;">
+										<div class="progress-bar" style="width:55%"></div>
+									</div>
+									<p class="mb-0 text-white small-font">Total Orders <span class="float-right">+4.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
 								</div>
-								<p class="mb-0 text-white small-font">Total Orders <span class="float-right">+4.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
 							</div>
-						</div>
-						<div class="col-12 col-lg-6 col-xl-3 border-light">
-							<div class="card-body">
-								<h5 class="text-white mb-0">8323 <span class="float-right"><i class="fa fa-usd"></i></span></h5>
-								<div class="progress my-3" style="height:3px;">
-									<div class="progress-bar" style="width:55%"></div>
+							<div class="col-12 col-lg-6 col-xl-3 border-light">
+								<div class="card-body">
+									<h5 class="text-white mb-0">8323 <span class="float-right"><i class="fa fa-usd"></i></span></h5>
+									<div class="progress my-3" style="height:3px;">
+										<div class="progress-bar" style="width:55%"></div>
+									</div>
+									<p class="mb-0 text-white small-font">Total Revenue <span class="float-right">+1.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
 								</div>
-								<p class="mb-0 text-white small-font">Total Revenue <span class="float-right">+1.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
 							</div>
-						</div>
-						<div class="col-12 col-lg-6 col-xl-3 border-light">
-							<div class="card-body">
-								<h5 class="text-white mb-0">6200 <span class="float-right"><i class="fa fa-eye"></i></span></h5>
-								<div class="progress my-3" style="height:3px;">
-									<div class="progress-bar" style="width:55%"></div>
+							<div class="col-12 col-lg-6 col-xl-3 border-light">
+								<div class="card-body">
+									<h5 class="text-white mb-0">6200 <span class="float-right"><i class="fa fa-eye"></i></span></h5>
+									<div class="progress my-3" style="height:3px;">
+										<div class="progress-bar" style="width:55%"></div>
+									</div>
+									<p class="mb-0 text-white small-font">Visitors <span class="float-right">+5.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
 								</div>
-								<p class="mb-0 text-white small-font">Visitors <span class="float-right">+5.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
 							</div>
-						</div>
-						<div class="col-12 col-lg-6 col-xl-3 border-light">
-							<div class="card-body">
-								<h5 class="text-white mb-0">5630 <span class="float-right"><i class="fa fa-envira"></i></span></h5>
-								<div class="progress my-3" style="height:3px;">
-									<div class="progress-bar" style="width:55%"></div>
+							<div class="col-12 col-lg-6 col-xl-3 border-light">
+								<div class="card-body">
+									<h5 class="text-white mb-0">5630 <span class="float-right"><i class="fa fa-envira"></i></span></h5>
+									<div class="progress my-3" style="height:3px;">
+										<div class="progress-bar" style="width:55%"></div>
+									</div>
+									<p class="mb-0 text-white small-font">Messages <span class="float-right">+2.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
 								</div>
-								<p class="mb-0 text-white small-font">Messages <span class="float-right">+2.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
 							</div>
-						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
 
 	<div class="row">
@@ -117,13 +141,12 @@ include_once('includes/loader.php')
 		</div>
 	</div><!--End Row-->
 
-      <!--End Dashboard Content-->
+<!--End Dashboard Content-->
 	  
-	<!--start overlay-->
-		  <div class="overlay toggle-menu"></div>
-		<!--end overlay-->
-		
-    </div>
+
+
+
+
     <!-- End container-fluid-->
     
     </div><!--End content-wrapper-->
@@ -137,17 +160,18 @@ include_once('includes/loader.php')
 
 
 	
-  <?php include'includes/footer.php'?>;
+  <?php include'includes/footer.php'?>
 
 
 
-  <?php include'includes/colorSwitch.php'?>;
+  <?php include'includes/colorSwitch.php'?>
 
 
 
    
   </div><!--End wrapper-->
 
+  <?php include'includes/js.php'?>
   
 
   
