@@ -18,20 +18,17 @@ include_once('includes/loader.php')
 		$req->execute(['email' => $_POST['email']]);
 		$user = $req->fetchObject();
 
-		echo($user->password);
-		echo ($_POST['password']);
-
-		if(	$user->password == $_POST['password'] )	{
+		if($user == null){
+			$_SESSION['flash']['danger'] = 'Identifiant ou Mot de passe Incorrecte';
+		}elseif(	$user->password == $_POST['password'] )	{
 			$_SESSION['auth'] = $user;
 			$_SESSION['flash']['success'] = 'Vous Êtes Connecté';	
 			header('Location:dashboard.php');
 			
 			exit();
 		}else{
-			$_SERVER['flash']['danger'] = 'Identifiant ou Mot de passe Incorrecte';	
+			$_SESSION['flash']['danger'] = 'Identifiant ou Mot de passe Incorrecte';	
 		}
-		
-					
 		
 	}
 
@@ -50,8 +47,25 @@ include_once('includes/loader.php')
 				</div>
 				<div class="card-title text-uppercase text-center py-3">Se Connecter</div>
 					
+				
+				<?php if (!empty($_SESSION['flash']['danger'])) { ?>
+				
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert">
+							<font style="vertical-align: inherit;">
+								<font style="vertical-align: inherit;">×</font>
+							</font>
+						</button>
+						<div class="alert-message">
+							<span>
+								<font style="vertical-align: inherit;">
+									<font style="vertical-align: inherit;"><?= $_SESSION['flash']['danger'] ?> <br></font>
+								</font>
+							</span>
+						</div>
+					</div>
 
-				<?php if (!empty($_SESSION['flash']['success'])) { ?>
+				<?php }if (!empty($_SESSION['flash']['success'])) { ?>
 				
 					<div class="alert alert-success alert-dismissible" role="alert">
 						<button type="button" class="close" data-dismiss="alert">
@@ -67,7 +81,6 @@ include_once('includes/loader.php')
 							</span>
 						</div>
 					</div>
-					
 				<?php } $_SESSION['flash'] = null; ?>
 
 
@@ -79,7 +92,7 @@ include_once('includes/loader.php')
 						<div class="form-group">
 							<label for="exampleInputUseremail" class="sr-only">E-mail</label>
 							<div class="position-relative has-icon-right">
-								<input type="email" id="exampleInputUseremail" name="email" class="form-control input-shadow" placeholder="E-mail">
+								<input type="email" id="exampleInputUseremail" name="email" class="form-control input-shadow" required placeholder="E-mail">
 								<div class="form-control-position">
 									<i class="icon-user"></i>
 								</div>
@@ -90,7 +103,7 @@ include_once('includes/loader.php')
 						<div class="form-group">
 							<label for="exampleInputPassword" class="sr-only">Mot de passe</label>
 							<div class="position-relative has-icon-right">
-								<input type="password" id="exampleInputPassword" name="password" class="form-control input-shadow" placeholder="Entez votre mot de passe">
+								<input type="password" id="exampleInputPassword" required name="password" class="form-control input-shadow" placeholder="Entez votre mot de passe">
 								<div class="form-control-position">
 									<i class="icon-lock"></i>
 								</div>
