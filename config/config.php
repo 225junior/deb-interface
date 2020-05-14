@@ -4,6 +4,6 @@ try {
     $bd = new PDO('mysql:host=localhost;dbname=debo;charset=utf8', 'root', '');
 
 } catch (Exception $e) {
-    // Connexion a la base de données Echuée
+    // Connexion a la base de données Echouée
     die('Erreur de Conn' . $e->getMessage());
 }

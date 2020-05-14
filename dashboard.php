@@ -103,38 +103,30 @@
 					<table class="table align-items-center table-flush table-borderless">
 						<thead>
 							<tr>
-								<th>Product</th>
-								<th>Photo</th>
-								<th>Product ID</th>
+								<th>#</th>
+								<th>Nom</th>
+								<th>Prenoms</th>
 								<th>Amount</th>
 								<th>Date</th>
-								<th>Shipping</th>
 							</tr>
 						</thead>
 						<tbody>
 						<?php
 							require'config/config.php';
-							$req = $bd->prepare('SELECT * from utilisateur');
+							$req = $bd->prepare('SELECT * from utilisateur ORDER BY id DESC LIMIT 5');
 							$req->execute();
-							while ($user = $req->fetch(PDO::FETCH_BOTH())) {
-									echo '<h5>';
-										$user['name'];
-									echo '</h5>';
-							}
+							while ($user = $req->fetch(PDO::FETCH_ASSOC)) {?>
+
+								<tr>
+									<td><?= $user['id'] ?></td>
+									<td><?= $user['name'] ?></td>
+									<td><?= $user['firstname'] ?></td>
+									<td><?= $user['firstname'] ?></td>
+									<td><?= $user['firstname'] ?></td>
+								</tr>
+							<?php } ?>
 						
-						?>
-							<tr>
-								<td>Hand Watch</td>
-								<td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img"></td>
-								<td>#9405840</td>
-								<td>$ 1800.00</td>
-								<td>03 Aug 2017</td>
-								<td>
-									<div class="progress shadow" style="height: 3px;">
-									<div class="progress-bar" role="progressbar" style="width: 40%"></div>
-									</div>
-								</td>
-							</tr>
+							
 						</tbody>
 					</table>
 				</div>

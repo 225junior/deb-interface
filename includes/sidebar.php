@@ -27,6 +27,23 @@
           <i class="zmdi zmdi-format-list-bulleted"></i> <span>Ajout d'Utilisateurs</span>
         </a>
       </li>
+      <li class="sidebar-header">ÉQUIPPEMENTS</li>
+      <li>
+			<a href="forms.php">
+         	<i class="zmdi zmdi-assignment-o"></i> <span>Tous les équippements</span>
+        	</a>
+		</li>
+		<li>
+			<a href="forms.php">
+         	<i class="zmdi zmdi-assignment-o"></i> <span>Équipements Livré</span>
+        	</a>
+		</li>
+		<li>
+			<a href="forms.php">
+         	<i class="zmdi zmdi-assignment-o"></i> <span>Équippements Manquants</span>
+        	</a>
+		</li>
+		
     </ul>
    
    </div>
