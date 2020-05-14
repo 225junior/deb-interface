@@ -1,34 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-  <meta name="description" content=""/>
-  <meta name="author" content=""/>
-  <title>Dashtreme Admin - Free Dashboard for Bootstrap 4 by Codervent</title>
-  <!-- loader-->
-  <link href="assets/css/pace.min.css" rel="stylesheet"/>
-  <script src="assets/js/pace.min.js"></script>
-  <!--favicon-->
-  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-  <!-- Bootstrap core CSS-->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
-  <!-- animate CSS-->
-  <link href="assets/css/animate.css" rel="stylesheet" type="text/css"/>
-  <!-- Icons CSS-->
-  <link href="assets/css/icons.css" rel="stylesheet" type="text/css"/>
-  <!-- Custom Style-->
-  <link href="assets/css/app-style.css" rel="stylesheet"/>
-  
-</head>
+<?php
+	include("includes/head.php")
+?>
 
 <body class="bg-theme bg-theme1">
+<?php 
+	// include_once('config/config.php')
+?>
 
-<!-- start loader -->
-   <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner" ><div class="loader"></div></div></div></div>
-   <!-- end loader -->
+<?php 
+	include_once('includes/loader.php')
+?>
 
+<?php
+	if (!empty($_POST)) {
+			require_once'config/config.php';
+			require_once'includes/functions.php';
+			$errors = array();
+
+			if (empty($_POST['name'])) {
+					$errors['name'] = "Nom Invalide (Alpha-Numerique)";
+			}
+
+			if (empty($_POST['firstname'])) {
+					$errors['firstname'] = "Prénom Invalide (Alpha-Numerique)";
+			}
+
+			if (empty($_POST['adresse'])) {
+					$errors['adresse'] = "Adresse Invalide (Alpha-Numerique)";
+			}
+
+			if (empty($_POST['tel']) || !preg_match('/^[0-9_]+$/',$_POST['tel'])) {
+					$errors['tel'] = "Erreur (Numerique Ex: 01020304)";
+			}
+
+			if (empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL )) {
+					$errors['email'] = "Email Invalide";
+			}else{
+					$req = $bd->prepare('SELECT id FROM utilisateur WHERE email = ? ');
+					$req->execute([$_POST['email']]);
+					$user = $req->fetch();
+					if ($user) {
+						$errors['email'] = 'Cette Adresse E-mail existe déjà'; 
+					}
+			}
+
+			if (empty($_POST['password']) || $_POST['password'] != $_POST['password_confirm']) {
+					$errors['password'] = "Mot de Passe Invalide";
+			}
+
+
+			if (empty($errors)) {
+
+
+					$req = $bd->prepare("INSERT INTO utilisateur 
+					SET name = ?,firstname = ?, adresse = ?,tel = ?,email = ?, password = ?");
+
+					// $password = crypt($_POST['password'], 'bonjour');
+
+					$req->execute( [ $_POST['name'],$_POST['firstname'],$_POST['adresse'],$_POST['tel'],$_POST['email'],$_POST['password']  ]);
+
+			}
+    }
+
+?>
 <!-- Start wrapper-->
  <div id="wrapper">
 
@@ -38,117 +72,143 @@
 		 	<div class="text-center">
 		 		<img src="assets/images/logo-icon.png" alt="logo icon">
 		 	</div>
-		  <div class="card-title text-uppercase text-center py-3">Sign Up</div>
-		    <form>
-			  <div class="form-group">
-			  <label for="exampleInputName" class="sr-only">Name</label>
-			   <div class="position-relative has-icon-right">
-				  <input type="text" id="exampleInputName" class="form-control input-shadow" placeholder="Enter Your Name">
-				  <div class="form-control-position">
-					  <i class="icon-user"></i>
-				  </div>
-			   </div>
-			  </div>
-			  <div class="form-group">
-			  <label for="exampleInputEmailId" class="sr-only">Email ID</label>
-			   <div class="position-relative has-icon-right">
-				  <input type="text" id="exampleInputEmailId" class="form-control input-shadow" placeholder="Enter Your Email ID">
-				  <div class="form-control-position">
-					  <i class="icon-envelope-open"></i>
-				  </div>
-			   </div>
-			  </div>
-			  <div class="form-group">
-			   <label for="exampleInputPassword" class="sr-only">Password</label>
-			   <div class="position-relative has-icon-right">
-				  <input type="text" id="exampleInputPassword" class="form-control input-shadow" placeholder="Choose Password">
-				  <div class="form-control-position">
-					  <i class="icon-lock"></i>
-				  </div>
-			   </div>
-			  </div>
-			  
-			   <div class="form-group">
-			     <div class="icheck-material-white">
-                   <input type="checkbox" id="user-checkbox" checked="" />
-                   <label for="user-checkbox">I Agree With Terms & Conditions</label>
-			     </div>
-			    </div>
-			  
-			 <button type="button" class="btn btn-light btn-block waves-effect waves-light">Sign Up</button>
-			  <div class="text-center mt-3">Sign Up With</div>
-			  
-			 <div class="form-row mt-4">
-			  <div class="form-group mb-0 col-6">
-			   <button type="button" class="btn btn-light btn-block"><i class="fa fa-facebook-square"></i> Facebook</button>
-			 </div>
-			 <div class="form-group mb-0 col-6 text-right">
-			  <button type="button" class="btn btn-light btn-block"><i class="fa fa-twitter-square"></i> Twitter</button>
-			 </div>
+      <div class="card-title text-uppercase text-center py-3">S'enregistrer</div>
+
+<?php if (!empty($errors)) {?>
+
+			<div class="alert alert-danger alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">×</font>
+					</font>
+				</button>
+			<div class="alert-message">
+			<?php foreach ($errors as $error ) {?>
+				<span>
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;"><?= $error ?> <br></font>
+					</font>
+				</span>
+			<?php } ?>
+
 			</div>
-			
-			 </form>
+<?php } ?>
+
+		</div>
+
+
+
+
+		   <form method="POST">
+
+				<!-- name name -->
+			  	<div class="form-group">
+					<label for="exampleInputName" class="sr-only">Name</label>
+					<div class="position-relative has-icon-right">
+						<input type="text" name="name" id="exampleInputName" class="form-control input-shadow" placeholder="Votre Nom">
+						<div class="form-control-position">
+								<i class="icon-user"></i>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- name firstname -->
+			  	<div class="form-group">
+					<label for="exampleInputfirstname" class="sr-only">Prenom</label>
+					<div class="position-relative has-icon-right">
+						<input type="text" name="firstname" id="exampleInputfirstname" class="form-control input-shadow" placeholder="Votre Prenom">
+						<div class="form-control-position">
+								<i class="icon-user"></i>
+						</div>
+					</div>
+			  	</div>
+
+
+
+				<!-- name adresse -->
+			  	<div class="form-group">
+					<label for="exampleInputadresse" class="sr-only">Prenom</label>
+					<div class="position-relative has-icon-right">
+						<input type="text" name="adresse" id="exampleInputadresse" class="form-control input-shadow" placeholder="Votre Adresse">
+						<div class="form-control-position">
+								<i class="icon-user"></i>
+						</div>
+					</div>
+				</div>
+
+
+
+				<!-- name tel -->
+			  	<div class="form-group">
+					<label for="exampleInputTel" class="sr-only">Téléphone</label>
+					<div class="position-relative has-icon-right">
+						<input type="text" name="tel" id="exampleInputTel" class="form-control input-shadow" placeholder="Votre téléphone">
+						<div class="form-control-position">
+								<i class="icon-user"></i>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- name email -->
+			  	<div class="form-group">
+			  		<label for="exampleInputEmailId" class="sr-only">Email ID</label>
+			   	<div class="position-relative has-icon-right">
+				  		<input type="email" name="email" id="exampleInputEmailId" class="form-control input-shadow" placeholder="Votre adresse E-mail">
+						<div class="form-control-position">
+							<i class="icon-envelope-open"></i>
+						</div>
+					</div>
+			   </div>
+
+
+				<!-- name password -->
+			  <div class="form-group">
+			   	<label for="exampleInputPassword" class="sr-only">Mot de passe</label>
+					<div class="position-relative has-icon-right">
+						<input type="password" id="exampleInputPassword" name="password" class="form-control input-shadow" placeholder="Votre Mot de passe">
+						<div class="form-control-position">
+							<i class="icon-lock"></i>
+						</div>
+					</div>
+			  </div>
+
+
+			  <!-- name password_confirm -->
+			  <div class="form-group">
+			   	<label for="exampleInputpassword_confirm" class="sr-only">Confirmé</label>
+					<div class="position-relative has-icon-right">
+						<input type="password" id="exampleInputPassword" name="password_confirm" class="form-control input-shadow" placeholder="Confirmez">
+						<div class="form-control-position">
+							<i class="icon-lock"></i>
+						</div>
+					</div>
+			  </div>
+
+			   <button type="submit" name="valider" class="btn btn-light btn-block waves-effect waves-light">S'Enregistrer</button>
+
+       </form>
+
+
+
+
+
+
+
+
+
 		   </div>
 		  </div>
-		  <div class="card-footer text-center py-3">
-		    <p class="text-warning mb-0">Already have an account? <a href="login.html"> Sign In here</a></p>
-		  </div>
+
 	     </div>
-    
-     <!--Start Back To Top Button-->
-    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
-    <!--End Back To Top Button-->
-	
-	<!--start color switcher-->
-   <div class="right-sidebar">
-    <div class="switcher-icon">
-      <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
-    </div>
-    <div class="right-sidebar-content">
 
-      <p class="mb-0">Gaussion Texture</p>
-      <hr>
-      
-      <ul class="switcher">
-        <li id="theme1"></li>
-        <li id="theme2"></li>
-        <li id="theme3"></li>
-        <li id="theme4"></li>
-        <li id="theme5"></li>
-        <li id="theme6"></li>
-      </ul>
+  </div><!--wrapper-->
 
-      <p class="mb-0">Gradient Background</p>
-      <hr>
-      
-      <ul class="switcher">
-        <li id="theme7"></li>
-        <li id="theme8"></li>
-        <li id="theme9"></li>
-        <li id="theme10"></li>
-        <li id="theme11"></li>
-        <li id="theme12"></li>
-		<li id="theme13"></li>
-        <li id="theme14"></li>
-        <li id="theme15"></li>
-      </ul>
-      
-     </div>
-   </div>
-  <!--end color switcher-->
-	
-	</div><!--wrapper-->
-	
-  <!-- Bootstrap core JavaScript-->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-	
-  <!-- sidebar-menu js -->
-  <script src="assets/js/sidebar-menu.js"></script>
-  
-  <!-- Custom scripts -->
-  <script src="assets/js/app-script.js"></script>
-  
+  <?php 
+		include_once('includes/js.php')
+	?>
+
+
 </body>
 </html>

@@ -11,6 +11,32 @@ include_once('config/config.php')
 include_once('includes/loader.php')
 ?>
 
+<?php 
+	if (!empty($_POST) && !empty($_POST['email']) && !empty($_POST['password']) ) {
+		require 'config/config.php';
+		$req = $bd->prepare('SELECT * from utilisateur WHERE email = :email');
+		$req->execute(['email' => $_POST['email']]);
+		$user = $req->fetchObject();
+
+		echo($user->password);
+		echo ($_POST['password']);
+
+		if(	$user->password == $_POST['password'] )	{
+			$_SESSION['auth'] = $user;
+			$_SERVER['flash']['success'] = 'Vous Êtes Connecté';	
+			header('Location:dashboard.php');
+			
+			exit();
+		}else{
+			$_SERVER['flash']['danger'] = 'Identifiant ou Mot de passe Incorrecte';	
+		}
+		
+					
+		
+	}
+
+?>
+
 
 <!-- Start wrapper-->
  <div id="wrapper">
@@ -30,7 +56,7 @@ include_once('includes/loader.php')
 
 
 				
-					<form action="treatments/login.php" method="POST">
+					<form method="POST">
 
 						<!-- email name = email -->
 						<div class="form-group">
