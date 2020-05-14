@@ -21,12 +21,30 @@
           <i class="zmdi zmdi-accounts"></i> <span>Utilisateurs</span>
         </a>
       </li>
+		<li class="sidebar-header">Fiches</li>
+		<li>
+			<a href="forms.php">
+         	<i class="zmdi zmdi-assignment"></i> <span>Interene de Sortie</span>
+        	</a>
+		</li>
+		<li>
+			<a href="forms.php">
+         	<i class="zmdi zmdi-assignment"></i> <span>Recette definitive</span>
+        	</a>
+		</li>
+		<li>
+			<a href="forms.php">
+         	<i class="zmdi zmdi-assignment-check"></i> <span>Bon de livraison Partiel</span>
+        	</a>
+		</li>
+		<li>
+			<a href="forms.php">
+         	<i class="zmdi zmdi-assignment-check"></i> <span>Bon de livraison</span>
+        	</a>
+		</li>
 
-      <li>
-        <a href="forms.php">
-          <i class="zmdi zmdi-format-list-bulleted"></i> <span>Ajout d'Utilisateurs</span>
-        </a>
-      </li>
+
+
       <li class="sidebar-header">ÉQUIPPEMENTS</li>
       <li>
 			<a href="forms.php">
