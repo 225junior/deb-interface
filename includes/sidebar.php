@@ -10,17 +10,12 @@
      </a>
    </div>
    <ul class="sidebar-menu do-nicescrol">
-      <li class="sidebar-header">MAIN NAVIGATION</li>
       <li>
         <a href="dashboard.php">
           <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
 
-      <li><a href="liste.php">
-          <i class="zmdi zmdi-accounts"></i> <span>Utilisateurs</span>
-        </a>
-      </li>
 		<li class="sidebar-header">Fiches</li>
 		<li>
 			<a href="forms.php">
@@ -61,7 +56,17 @@
          	<i class="zmdi zmdi-assignment-o"></i> <span>Équippements Manquants</span>
         	</a>
 		</li>
-		
+		<li>
+			<a href="forms.php">
+         	<i class="zmdi zmdi-8tracks"></i> <span>Historique</span>
+        	</a>
+		</li>
+		<li>
+			<a href="forms.php">
+         	<i class="zmdi zmdi-album"></i> <span>Observation</span>
+        	</a>
+		</li>
+
     </ul>
    
    </div>
