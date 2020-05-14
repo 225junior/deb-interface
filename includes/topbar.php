@@ -8,9 +8,9 @@
      </a>
     </li>
     <li class="nav-item">
-      <form class="search-bar">
-        <input type="text" class="form-control" placeholder="Enter keywords">
-         <a href="javascript:void();"><i class="icon-magnifier"></i></a>
+      <form class="search-bar" method="POST" style="display: flex;">
+        <input type="text" class="form-control" name="searchText" placeholder="Recherche des Utilisateurs">
+         <button type="submit" name="search" class="btn btn-light btn-inline "><i class="icon-magnifier"></i></button>
       </form>
     </li>
   </ul>
@@ -39,11 +39,6 @@
           </a>
         </li>
         <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><i class="icon-envelope mr-2"></i> Inbox</li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><i class="icon-wallet mr-2"></i> Account</li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><i class="icon-settings mr-2"></i> Setting</li>
         <li class="dropdown-divider"></li>
         <li class="dropdown-item"><a href="treatments/logout.php"><i class="icon-power mr-2"></i> Deconnexion</a></li>
       </ul>

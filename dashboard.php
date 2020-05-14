@@ -17,8 +17,6 @@
 
 <!--Start Dashboard Content-->
 		<?php
-			debug($_SESSION);
-
 				logged_only();
 			
 				if (!empty($_SESSION['flash'])) { ?>
@@ -49,11 +47,18 @@
 					<div class="row row-group m-0">
 							<div class="col-12 col-lg-6 col-xl-3 border-light">
 								<div class="card-body">
-									<h5 class="text-white mb-0">9526 <span class="float-right"><i class="fa fa-shopping-cart"></i></span></h5>
+									<?php
+										require'config/config.php';
+										$req = $bd->prepare('SELECT * from utilisateur');
+										$req->execute();
+										$users = $req->fetchObject();
+										$nbUser= $req->rowCount();
+									?>
+									<h5 class="text-white mb-0"><?= $nbUser ?> <span class="float-right"><i class="zmdi zmdi-accounts"></i></span></h5>
 									<div class="progress my-3" style="height:3px;">
 										<div class="progress-bar" style="width:55%"></div>
 									</div>
-									<p class="mb-0 text-white small-font">Total Orders <span class="float-right">+4.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
+									<p class="mb-0 text-white small-font">Total Utilisateurs</p>
 								</div>
 							</div>
 							<div class="col-12 col-lg-6 col-xl-3 border-light">
@@ -93,7 +98,7 @@
 	<div class="row">
 		<div class="col-12 col-lg-12">
 			<div class="card">
-				<div class="card-header">Derniers Ajouts</div>
+				<div class="card-header">5 Derniers Ajouts</div>
 				<div class="table-responsive">
 					<table class="table align-items-center table-flush table-borderless">
 						<thead>
@@ -107,6 +112,17 @@
 							</tr>
 						</thead>
 						<tbody>
+						<?php
+							require'config/config.php';
+							$req = $bd->prepare('SELECT * from utilisateur');
+							$req->execute();
+							while ($user = $req->fetch(PDO::FETCH_BOTH())) {
+									echo '<h5>';
+										$user['name'];
+									echo '</h5>';
+							}
+						
+						?>
 							<tr>
 								<td>Hand Watch</td>
 								<td><img src="https://via.placeholder.com/110x110" class="product-img" alt="product img"></td>

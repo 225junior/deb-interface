@@ -55,9 +55,9 @@
 					$req = $bd->prepare("INSERT INTO utilisateur 
 					SET name = ?,firstname = ?, adresse = ?,tel = ?,email = ?, password = ?");
 
-					// $password = crypt($_POST['password'], 'bonjour');
+					$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-					$req->execute( [ $_POST['name'],$_POST['firstname'],$_POST['adresse'],$_POST['tel'],$_POST['email'],$_POST['password']  ]);
+					$req->execute( [ $_POST['name'],$_POST['firstname'],$_POST['adresse'],$_POST['tel'],$_POST['email'],$password  ]);
 
 			}
     }
