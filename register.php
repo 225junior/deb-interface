@@ -24,11 +24,7 @@
 			if (empty($_POST['firstname'])) {
 					$errors['firstname'] = "Prénom Invalide (Alpha-Numerique)";
 			}
-
-			if (empty($_POST['adresse'])) {
-					$errors['adresse'] = "Adresse Invalide (Alpha-Numerique)";
-			}
-
+			
 			if (empty($_POST['tel']) || !preg_match('/^[0-9_]+$/',$_POST['tel'])) {
 					$errors['tel'] = "Erreur (Numerique Ex: 01020304)";
 			}
@@ -40,7 +36,7 @@
 					$req->execute([$_POST['email']]);
 					$user = $req->fetch();
 					if ($user) {
-						$errors['email'] = 'Cette Adresse E-mail existe déjà'; 
+						$errors['email'] = 'Cette E-mail existe déjà'; 
 					}
 			}
 
@@ -53,11 +49,11 @@
 
 
 					$req = $bd->prepare("INSERT INTO utilisateur 
-					SET name = ?,firstname = ?, adresse = ?,tel = ?,email = ?, password = ?");
+					SET name = ?,firstname = ?, tel = ?,email = ?, password = ?");
 
 					$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-					$req->execute( [ $_POST['name'],$_POST['firstname'],$_POST['adresse'],$_POST['tel'],$_POST['email'],$password  ]);
+					$req->execute( [ $_POST['name'],$_POST['firstname'],$_POST['tel'],$_POST['email'],$password  ]);
 
 			}
     }
@@ -125,42 +121,29 @@
 			  	</div>
 
 
-
-				<!-- name adresse -->
-			  	<div class="form-group">
-					<label for="exampleInputadresse" class="sr-only">Prenom</label>
-					<div class="position-relative has-icon-right">
-						<input type="text" name="adresse" id="exampleInputadresse" required class="form-control input-shadow" placeholder="Votre Adresse">
-						<div class="form-control-position">
-								<i class="zmdi zmdi-balance"></i>
-						</div>
-					</div>
-				</div>
-
-
-
 				<!-- name tel -->
 			  	<div class="form-group">
 					<label for="exampleInputTel" class="sr-only">Téléphone</label>
 					<div class="position-relative has-icon-right">
-						<input type="text" name="tel" maxlength="8" minlength="8" required id="exampleInputTel" class="form-control input-shadow" placeholder="Votre téléphone">
+						<input type="tel" name="tel" maxlength="8" minlength="8" required id="exampleInputTel" class="form-control input-shadow" placeholder="Votre téléphone">
 						<div class="form-control-position">
-								<i class="zmdi zmdi-account-box-mail"></i>
+							<i class="zmdi zmdi-account-box-mail"></i>
 						</div>
 					</div>
 				</div>
+
 
 
 				<!-- name email -->
 			  	<div class="form-group">
 			  		<label for="exampleInputEmailId" class="sr-only">Email ID</label>
-			   	<div class="position-relative has-icon-right">
-				  		<input type="email" name="email" id="exampleInputEmailId" required class="form-control input-shadow" placeholder="Votre adresse E-mail">
+					<div class="position-relative has-icon-right">
+						<input type="email" name="email" id="exampleInputEmailId" required class="form-control input-shadow" placeholder="Votre adresse E-mail">
 						<div class="form-control-position">
 							<i class="icon-envelope-open"></i>
 						</div>
 					</div>
-			   </div>
+			   	</div>
 
 
 				<!-- name password -->
@@ -176,19 +159,19 @@
 
 
 			  <!-- name password_confirm -->
-			  <div class="form-group">
-			   	<label for="exampleInputpassword_confirm" class="sr-only">Confirmé</label>
+			  	<div class="form-group">
+			   		<label for="exampleInputpassword_confirm" class="sr-only">Confirmé</label>
 					<div class="position-relative has-icon-right">
 						<input type="password" id="exampleInputPassword" required name="password_confirm" class="form-control input-shadow" placeholder="Confirmez">
 						<div class="form-control-position">
 							<i class="icon-lock"></i>
 						</div>
 					</div>
-			  </div>
+			  	</div>
 
 			   <button type="submit" name="valider" class="btn btn-light btn-block waves-effect waves-light">S'Enregistrer</button>
 
-       </form>
+       	</form>
 
 
 
@@ -198,8 +181,8 @@
 
 
 
-		   </div>
-		  </div>
+		   	</div>
+		</div>
 
 	     </div>
 
