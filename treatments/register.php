@@ -2,7 +2,7 @@
 	if (!empty($_POST)) {
         require_once'../config/config.php';
         require_once'../includes/functions.php';
-        echo 'post nest pas vide';
+
         $errors = array();
 
         if (empty($_POST['name'])) {

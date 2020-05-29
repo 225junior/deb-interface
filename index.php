@@ -21,7 +21,7 @@ include_once('includes/loader.php')
 		
 		if($user == null){
 			$_SESSION['flash']['danger'] = 'Identifiant ou Mot de passe Incorrecte';
-		}elseif(  password_verify ($_POST['password'],$user->password )	){
+		}elseif(  password_verify ($_POST['password'], $user->password )	){
 			$_SESSION['auth'] = $user;
 			$_SESSION['flash']['success'] = 'Vous Êtes Connecté';	
 			header('Location:dashboard.php');

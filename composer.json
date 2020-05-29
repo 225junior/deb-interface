@@ -1,0 +1,13 @@
+{
+    "name": "brin/225junior",
+    "type": "makdown",
+    "require": {
+        "michelf/php-markdown": "^1.9"
+    },
+    "authors": [
+        {
+            "name": "225junior",
+            "email": "225juniorbrindou@gmail.com"
+        }
+    ]
+}

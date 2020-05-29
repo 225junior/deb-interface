@@ -13,10 +13,11 @@
 
 <?php
 	if (!empty($_POST)) {
+			
 			require_once'config/config.php';
 			require_once'includes/functions.php';
-			$errors = array();
-
+			$errors = array(); 
+ 
 			if (empty($_POST['name'])) {
 					$errors['name'] = "Nom Invalide (Alpha-Numerique)";
 			}
