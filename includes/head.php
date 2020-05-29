@@ -1,8 +1,8 @@
 <?php if (session_status() == PHP_SESSION_NONE) {
         session_start();
 }?>
-<?php require 'functions.php' ?>
 
+<?php require 'functions.php' ?>
 
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <meta name="description" content=""/>
   <meta name="author" content=""/>
-  <title>Dashtreme Admin</title>
+  <title>Gestion|APP</title>
   <!-- loader-->
   <link href="assets/css/pace.min.css" rel="stylesheet"/>
   <script src="assets/js/pace.min.js"></script>

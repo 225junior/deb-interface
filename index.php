@@ -36,6 +36,22 @@ include_once('includes/loader.php')
 ?>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Start wrapper-->
  <div id="wrapper">
 
@@ -48,6 +64,13 @@ include_once('includes/loader.php')
 				</div>
 				<div class="card-title text-uppercase text-center py-3">Se Connecter</div>
 					
+
+
+
+
+
+
+
 				
 				<?php if (!empty($_SESSION['flash']['danger'])) { ?>
 				
@@ -83,6 +106,19 @@ include_once('includes/loader.php')
 						</div>
 					</div>
 				<?php } $_SESSION['flash'] = null; ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

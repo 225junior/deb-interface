@@ -57,7 +57,6 @@
     <!--End Back To Top Button-->
 	
   <?php include'includes/footer.php'?>
-  <?php include'includes/colorSwitch.php'?>
    
 </div><!--End wrapper-->
 

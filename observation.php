@@ -56,10 +56,15 @@
     <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
     <!--End Back To Top Button-->
 	
-  <?php include'includes/footer.php'?>
-  <?php include'includes/colorSwitch.php'?>
-   
+  <?php include'includes/footer.php'?>   
 </div><!--End wrapper-->
+
+
+
+
+
+
+
 
   <?php include'includes/js.php'?>
   

@@ -155,12 +155,6 @@
 	
   <?php include'includes/footer.php'?>
 
-
-
-  <?php include'includes/colorSwitch.php'?>
-
-
-
    
   </div><!--End wrapper-->
 

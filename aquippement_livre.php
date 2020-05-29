@@ -10,6 +10,22 @@
 
 <?php include_once('includes/topbar.php');?>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="clearfix"></div>
 	
   	<div class="content-wrapper">
@@ -40,17 +56,7 @@
 
 
 <!--Start Dashboard Content-->
-
-
-
-	
-
 <!--End Dashboard Content-->
-	  
-
-
-
-
     </div><!--End container-fluid-->
    <!--Start Back To Top Button-->
     <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
@@ -59,6 +65,16 @@
   <?php include'includes/footer.php'?>
    
 </div><!--End wrapper-->
+
+
+
+
+
+
+
+
+
+
 
   <?php include'includes/js.php'?>
   

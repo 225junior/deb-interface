@@ -1,13 +1,19 @@
 {
     "name": "brin/225junior",
-    "type": "makdown",
+    "type": "phphelpmeda",
     "require": {
-        "michelf/php-markdown": "^1.9"
+        
     },
     "authors": [
         {
             "name": "225junior",
             "email": "225juniorbrindou@gmail.com"
         }
-    ]
+    ],
+    "autoload":{
+        "psr-4" : {
+            "App\\":"app",
+            "Includes\\":"includes"
+        }
+    }
 }
