@@ -51,12 +51,18 @@
 
 <!--Start User-Create Content-->
 
+        <?php 
+            require'config/config.php';
+            $req = $bd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ? ');
+            $req->execute([$_GET['id']]);
+            $user = $req->fetch();
+         ?>
 
 
 <div class="row m-3">
 
-	<div class="col-4">
-		<h4 class="text-left">Utilisateur → Modiffication</h4>	
+	<div class="col-6">
+		<h4 class="text-left">Utilisateur → Modiffication : <span style="text-transform: uppercase;"> <?= $user['nom_utilisateur']?></span> <?= $user['prenom_utilisateur']?></h4>	
 	</div>
 
 </div>		
@@ -70,36 +76,85 @@
 
 
 
-            <form>
-                    <!-- name =  -->
-               <div class="form-group" method="POST" >
-                    <label for="input-1">Nom</label>
-                    <input type="text" name="name"  value="" class="form-control" id="input-1" placeholder="Entrez le nom">
+
+            <form method="POST">
+
+                <!-- name name -->
+                <div class="form-group">
+                    <label for="exampleInputName" class="sr-only">Name</label>
+                    <div class="position-relative has-icon-right">
+                        <input type="text" name="name" value="<?= $user['nom_utilisateur']?>" id="exampleInputName" required class="form-control input-shadow" placeholder="Votre Nom">
+                        <div class="form-control-position">
+                                <i class="icon-user"></i>
+                        </div>
+                    </div>
                 </div>
 
-                    <!-- name =  -->
+
+                <!-- name firstname -->
                 <div class="form-group">
-                    <label for="input-2">Email</label>
-                    <input type="text" name="email" value="" class="form-control" id="input-2" placeholder="Entrez l'adresse email">
+                    <label for="exampleInputfirstname" class="sr-only">Prenom</label>
+                    <div class="position-relative has-icon-right">
+                        <input type="text"  value="<?= $user['prenom_utilisateur']?>" name="firstname" id="exampleInputfirstname" required class="form-control input-shadow" placeholder="Votre Prenom">
+                        <div class="form-control-position">
+                                <i class="icon-user"></i>
+                        </div>
+                    </div>
                 </div>
 
-                    <!-- name =  -->
+
+                <!-- name tel -->
                 <div class="form-group">
-                    <label for="input-3">Mobile</label>
-                    <input type="number" name="tel" value="" min="0" maxlength="8" minlength="8" class="form-control" id="input-3" placeholder="Entrez le numéro de mobile">
+                    <label for="exampleInputTel" class="sr-only">Téléphone</label>
+                    <div class="position-relative has-icon-right">
+                        <input type="tel"  value="<?= $user['telephone_utilisateur']?>" name="tel" maxlength="8" minlength="8" required id="exampleInputTel" class="form-control input-shadow" placeholder="Votre téléphone">
+                        <div class="form-control-position">
+                            <i class="zmdi zmdi-account-box-mail"></i>
+                        </div>
+                    </div>
                 </div>
 
-                    <!-- name =  -->
+
+
+                <!-- name email -->
                 <div class="form-group">
-                    <label for="input-4">Mot de passe</label>
-                    <input type="text" name="password" value="" class="form-control" id="input-4" placeholder="Entrer le mot de passe">
+                    <label for="exampleInputEmailId" class="sr-only">Email</label>
+                    <div class="position-relative has-icon-right">
+                        <input type="email"  value="<?= $user['email_utilisateur']?>" name="email" id="exampleInputEmailId" required class="form-control input-shadow" placeholder="Votre adresse E-mail">
+                        <div class="form-control-position">
+                            <i class="icon-envelope-open"></i>
+                        </div>
+                    </div>
                 </div>
 
-                    <!-- name =  -->
+
+                <!-- name password -->
+              <div class="form-group">
+                <label for="exampleInputPassword" class="sr-only">Mot de passe</label>
+                    <div class="position-relative has-icon-right">
+                        <input type="password" id="exampleInputPassword" minlength="8" required name="password" class="form-control input-shadow" placeholder="Votre Mot de passeactuel">
+                        <div class="form-control-position">
+                            <i class="icon-lock"></i>
+                        </div>
+                    </div>
+              </div>
+
+
+              <!-- name password_confirm -->
                 <div class="form-group">
-                    <button type="submit" name="valider" class="btn btn-light px-5">Inscrire</button>
+                    <label for="new_password" class="sr-only">Nouveau Mot de passe</label>
+                    <div class="position-relative has-icon-right">
+                        <input type="password" id="new_password" required name="password_confirm" class="form-control input-shadow" placeholder="Nouveau Mot de passe">
+                        <div class="form-control-position">
+                            <i class="icon-lock"></i>
+                        </div>
+                    </div>
                 </div>
-            </form>
+
+               <button type="submit" name="valider" class="btn btn-light btn-block waves-effect waves-danger">Modiffier</button>
+
+        </form>
+
 
 
 

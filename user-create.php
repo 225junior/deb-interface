@@ -103,6 +103,8 @@
                     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
                     $req->execute( [ $_POST['name'],$_POST['firstname'],$_POST['tel'],$_POST['email'],$password  ]);
+
+                    // message flash si enregistrement Bien déroulé
                     $_SESSION['flash']['success'] = 'Enregistrement Effectué.';
 
             }
@@ -217,7 +219,6 @@
                     <input type="text" minlength="8"  name="password" required class="form-control" id="input-4" placeholder="Entrer le mot de passe">
                 </div>
 
-                <input type="hidden" name="type">
                     <!-- name = valider  -->
                 <div class="form-group">
                     <button type="submit" name="valider" class="btn btn-info px-5 btn-block">Inscrire</button>

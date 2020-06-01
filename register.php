@@ -102,10 +102,10 @@
 
 
 
-		   <form method="POST">
+			<form method="POST">
 
 				<!-- name name -->
-			  	<div class="form-group">
+				<div class="form-group">
 					<label for="exampleInputName" class="sr-only">Name</label>
 					<div class="position-relative has-icon-right">
 						<input type="text" name="name" id="exampleInputName" required class="form-control input-shadow" placeholder="Votre Nom">
