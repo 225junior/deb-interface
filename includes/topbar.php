@@ -26,8 +26,8 @@
            <div class="media">
              <div class="avatar"><img class="align-self-start mr-3" src="assets/images/user.png" alt="avatar utilisateur"></div>
             <div class="media-body">
-            <h6 class="mt-2 user-title"> <?= $_SESSION['auth']->name ?></h6>
-            <p class="user-subtitle"><?= $_SESSION['auth']->email ?></p>
+            <h6 class="mt-2 user-title"> <?= $_SESSION['auth']->nom_utilisateur ?></h6>
+            <p class="user-subtitle"><?= $_SESSION['auth']->email_utilisateur ?></p>
             </div>
            </div>
           </a>
