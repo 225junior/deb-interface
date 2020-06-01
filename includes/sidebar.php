@@ -21,7 +21,7 @@
         	</a>
 		</li>
 		<li>
-			<a href="recette_definitive.php">
+			<a href="projet.php">
          	<i class="zmdi zmdi-assignment"></i> <span>Projet</span>
         	</a>
 		</li>

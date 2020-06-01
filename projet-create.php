@@ -49,7 +49,7 @@
 		?>
 
 
-<!--Start User-Create Content-->
+<!--Start Projet-Create Content-->
 
 
 
@@ -57,7 +57,7 @@
 
 	<div class="col-lg-8">
         <div class="card">
-        <div class="card-header">Utilisateur → Nouveau</div>
+        <div class="card-header">projet → Nouveau</div>
         <div class="card-body">
 
 

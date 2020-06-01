@@ -49,15 +49,22 @@
 		?>
 
 
-<!--Start User-Create Content-->
+<!--Start Projet-Create Content-->
 
 
 
 <div class="row m-3">
 
+	<div class="col-4">
+		<h4 class="text-left">Projet → Modiffication</h4>	
+	</div>
+
+</div>		
+
+<div class="row m-3">
+
 	<div class="col-lg-8">
         <div class="card">
-        <div class="card-header">Utilisateur → Nouveau</div>
         <div class="card-body">
 
 
@@ -67,30 +74,30 @@
                     <!-- name =  -->
                <div class="form-group" method="POST" >
                     <label for="input-1">Nom</label>
-                    <input type="text" name="name" class="form-control" id="input-1" placeholder="Entrez le nom">
+                    <input type="text" name="name"  value="" class="form-control" id="input-1" placeholder="Entrez le nom">
                 </div>
 
                     <!-- name =  -->
                 <div class="form-group">
                     <label for="input-2">Email</label>
-                    <input type="text" name="email" class="form-control" id="input-2" placeholder="Entrez l'adresse email">
+                    <input type="text" name="email" value="" class="form-control" id="input-2" placeholder="Entrez l'adresse email">
                 </div>
 
                     <!-- name =  -->
                 <div class="form-group">
                     <label for="input-3">Mobile</label>
-                    <input type="number" name="tel" min="0" maxlength="8" minlength="8" class="form-control" id="input-3" placeholder="Entrez le numéro de mobile">
+                    <input type="number" name="tel" value="" min="0" maxlength="8" minlength="8" class="form-control" id="input-3" placeholder="Entrez le numéro de mobile">
                 </div>
 
                     <!-- name =  -->
                 <div class="form-group">
                     <label for="input-4">Mot de passe</label>
-                    <input type="text" name="password" class="form-control" id="input-4" placeholder="Entrer le mot de passe">
+                    <input type="text" name="password" value="" class="form-control" id="input-4" placeholder="Entrer le mot de passe">
                 </div>
 
                     <!-- name =  -->
                 <div class="form-group">
-                    <button type="submit" name="valider" class="btn btn-info px-5 btn-block">Inscrire</button>
+                    <button type="submit" name="valider" class="btn btn-light px-5">Inscrire</button>
                 </div>
             </form>
 
