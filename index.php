@@ -15,13 +15,13 @@ include_once('includes/loader.php')
 	if (!empty($_POST) && !empty($_POST['email']) && !empty($_POST['password']) ) {
 
 		require 'config/config.php';
-		$req = $bd->prepare('SELECT * from utilisateur WHERE email = :email');
+		$req = $bd->prepare('SELECT * from utilisateur WHERE email_utilisateur = :email');
 		$req->execute(['email' => $_POST['email']]);
 		$user = $req->fetchObject();
 		
 		if($user == null){
 			$_SESSION['flash']['danger'] = 'Identifiant ou Mot de passe Incorrecte';
-		}elseif(  password_verify ($_POST['password'], $user->password )	){
+		}elseif(  password_verify ($_POST['password'], $user->motpass_utilisateur )	){
 			$_SESSION['auth'] = $user;
 			$_SESSION['flash']['success'] = 'Vous Êtes Connecté';	
 			header('Location:dashboard.php');

@@ -33,7 +33,7 @@
 			if (empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL )) {
 					$errors['email'] = "Email Invalide";
 			}else{
-					$req = $bd->prepare('SELECT id FROM utilisateur WHERE email = ? ');
+					$req = $bd->prepare('SELECT id FROM utilisateur WHERE email_utilisateur = ? ');
 					$req->execute([$_POST['email']]);
 					$user = $req->fetch();
 					if ($user) {
@@ -50,7 +50,7 @@
 
 
 					$req = $bd->prepare("INSERT INTO utilisateur 
-					SET name = ?,firstname = ?, tel = ?,email = ?, password = ?");
+					SET nom_utilisateur = ?,prenom_utilisateur = ?, telephone_utilisateur = ?,email_utilisateur = ?, motpass_utilisateur = ?");
 
 					$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
