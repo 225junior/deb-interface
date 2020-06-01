@@ -15,55 +15,38 @@
           <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
-
-		<li class="sidebar-header">Fiches</li>
 		<li>
-			<a href="interne_sortie.php">
-         	<i class="zmdi zmdi-assignment"></i> <span>Interne de Sortie</span>
+			<a href="user.php">
+         	<i class="zmdi zmdi-accounts"></i> <span>Utilisateurs</span>
         	</a>
 		</li>
 		<li>
 			<a href="recette_definitive.php">
-         	<i class="zmdi zmdi-assignment"></i> <span>Recette définitive</span>
+         	<i class="zmdi zmdi-assignment"></i> <span>Projet</span>
         	</a>
 		</li>
+
 		<li>
 			<a href="bon_livraison_partiel.php">
-         	<i class="zmdi zmdi-assignment-check"></i> <span>Bon de livraison Partiel</span>
+         	<i class="zmdi zmdi-assignment-check"></i> <span>Modules</span>
         	</a>
 		</li>
+
 		<li>
 			<a href="bon_livraison.php">
-         	<i class="zmdi zmdi-assignment-check"></i> <span>Bon de livraison</span>
+         	<i class="zmdi zmdi-assignment-check"></i> <span>Équiprements</span>
         	</a>
 		</li>
 
-
-
-      <li class="sidebar-header">ÉQUIPPEMENTS</li>
-      <li>
-			<a href="equippements.php">
-         	<i class="zmdi zmdi-assignment-o"></i> <span>Tous les équippements</span>
-        	</a>
-		</li>
 		<li>
 			<a href="aquippement_livre.php">
-         	<i class="zmdi zmdi-assignment-o"></i> <span>Équipements Livré</span>
+         	<i class="zmdi zmdi-assignment-o"></i> <span>Historiques</span>
         	</a>
 		</li>
-		<li>
-			<a href="aquippement_manquant.php">
-         	<i class="zmdi zmdi-assignment-o"></i> <span>Équippements Manquants</span>
-        	</a>
-		</li>
-		<li>
-			<a href="historique.php">
-         	<i class="zmdi zmdi-8tracks"></i> <span>Historique</span>
-        	</a>
-		</li>
+
 		<li>
 			<a href="observation.php">
-         	<i class="zmdi zmdi-album"></i> <span>Observation</span>
+         	<i class="zmdi zmdi-album"></i> <span>Remarque</span>
         	</a>
 		</li>
 

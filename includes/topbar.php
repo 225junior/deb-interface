@@ -7,12 +7,6 @@
        <i class="icon-menu menu-icon"></i>
      </a>
     </li>
-    <li class="nav-item">
-      <form class="search-bar" method="POST" style="display: flex;">
-        <input type="text" class="form-control" name="searchText" placeholder="Recherche des Utilisateurs">
-         <button type="submit" name="search" class="btn btn-light btn-inline "><i class="icon-magnifier"></i></button>
-      </form>
-    </li>
   </ul>
      
   <ul class="navbar-nav align-items-center right-nav-link">
