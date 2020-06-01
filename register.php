@@ -30,12 +30,17 @@
 					$errors['tel'] = "Erreur (Numerique Ex: 01020304)";
 			}
 
+			// si email est vide 	 ou 	 email ne respecte pas email format
 			if (empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL )) {
-					$errors['email'] = "Email Invalide";
+					// tableau errors ajoute le message
+				$errors['email'] = "Email Invalide";
 			}else{
-					$req = $bd->prepare('SELECT id FROM utilisateur WHERE email_utilisateur = ? ');
+				// si email n'est pas vide, et email respecte le format 
+				// verification si email deja dans bd
+					$req = $bd->prepare('SELECT id_utilisateur FROM utilisateur WHERE email_utilisateur = ? ');
 					$req->execute([$_POST['email']]);
 					$user = $req->fetch();
+					// ajoute l'erreur dans le tableau erreur
 					if ($user) {
 						$errors['email'] = 'Cette E-mail existe déjà'; 
 					}
@@ -47,7 +52,8 @@
 
 
 			if (empty($errors)) {
-
+				// Si le tabeau des erreurs est vide
+				// debut de l'enregistrement
 
 					$req = $bd->prepare("INSERT INTO utilisateur 
 					SET nom_utilisateur = ?,prenom_utilisateur = ?, telephone_utilisateur = ?,email_utilisateur = ?, motpass_utilisateur = ?");
