@@ -59,52 +59,54 @@
 		<h4 class="text-left">Utilisateurs → Nouveau</h4>	
 	</div>
 
-	<div class="col-4 offset-3">
-		<a class="btn btn-light" href="models/user/create.php">Ajouter un nouvel Utilisateur</a>		
-	</div>
 </div>		
 
 <div class="row m-3">
 
-	<div class="col-lg-6">
-         <div class="card">
-           <div class="card-body">
-           <div class="card-title">Forme verticale</font></font></div>
-           <hr>
+	<div class="col-lg-8">
+        <div class="card">
+        <div class="card-body">
+
+
+
+
             <form>
-           <div class="form-group">
-            <label for="input-1">Nom</font></font></label>
-            <input type="text" class="form-control" id="input-1" placeholder="Entrez votre nom">
-           </div>
-           <div class="form-group">
-            <label for="input-2">Email</font></font></label>
-            <input type="text" class="form-control" id="input-2" placeholder="Entrez votre adresse email">
-           </div>
-           <div class="form-group">
-            <label for="input-3">Mobile</font></font></label>
-            <input type="text" class="form-control" id="input-3" placeholder="Entrez votre numéro de mobile">
-           </div>
-           <div class="form-group">
-            <label for="input-4">Mot de passe</font></font></label>
-            <input type="text" class="form-control" id="input-4" placeholder="Entrer le mot de passe">
-           </div>
-           <div class="form-group">
-            <label for="input-5">Confirmez le mot de passe</font></font></label>
-            <input type="text" class="form-control" id="input-5" placeholder="Confirmez le mot de passe">
-           </div>
-           <div class="form-group py-2">
-             <div class="icheck-material-white">
-            <input type="checkbox" id="user-checkbox1" checked="">
-            <label for="user-checkbox1">J'accepte les termes et conditions</font></font></label>
-            </div>
-           </div>
-           <div class="form-group">
-            <button type="submit" class="btn btn-light px-5"><i class="icon-lock"></i> S'inscrire</font></font></button>
-          </div>
-          </form>
-         </div>
-         </div>
-      </div>
+                    <!-- name =  -->
+               <div class="form-group" method="POST" >
+                    <label for="input-1">Nom</label>
+                    <input type="text" name="name" class="form-control" id="input-1" placeholder="Entrez le nom">
+                </div>
+
+                    <!-- name =  -->
+                <div class="form-group">
+                    <label for="input-2">Email</label>
+                    <input type="text" name="email" class="form-control" id="input-2" placeholder="Entrez l'adresse email">
+                </div>
+
+                    <!-- name =  -->
+                <div class="form-group">
+                    <label for="input-3">Mobile</label>
+                    <input type="number" name="tel" min="0" maxlength="8" minlength="8" class="form-control" id="input-3" placeholder="Entrez le numéro de mobile">
+                </div>
+
+                    <!-- name =  -->
+                <div class="form-group">
+                    <label for="input-4">Mot de passe</label>
+                    <input type="text" name="password" class="form-control" id="input-4" placeholder="Entrer le mot de passe">
+                </div>
+
+                    <!-- name =  -->
+                <div class="form-group">
+                    <button type="submit" name="valider" class="btn btn-light px-5">Inscrire</button>
+                </div>
+            </form>
+
+
+
+
+        </div>
+        </div>
+    </div>
 </div>
 
 
