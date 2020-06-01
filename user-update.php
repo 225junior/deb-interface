@@ -104,6 +104,9 @@
                             $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
                             $req->execute( [ $_POST['name'],$_POST['firstname'],$_POST['tel'],$_POST['email'],$password  ]);
+                            $_SESSION['flash']['success'] = 'Modiffication Reusie!';
+                            echo '<script> document.location.replace("user.php"); </script>';
+                            exit();
 
                     }
             }
@@ -238,24 +241,13 @@
               <div class="form-group">
                 <label for="exampleInputPassword" class="sr-only">Mot de passe</label>
                     <div class="position-relative has-icon-right">
-                        <input type="password" id="exampleInputPassword" minlength="8" required name="password" class="form-control input-shadow" placeholder="Mot de passeactuel">
+                        <input type="password" id="exampleInputPassword" minlength="8" required name="password" class="form-control input-shadow" placeholder="Mot de passe actuel">
                         <div class="form-control-position">
                             <i class="icon-lock"></i>
                         </div>
                     </div>
               </div>
 
-
-              <!-- name password_confirm -->
-                <div class="form-group">
-                    <label for="new_password" class="sr-only">Nouveau Mot de passe</label>
-                    <div class="position-relative has-icon-right">
-                        <input type="password" id="new_password" required name="new_password" class="form-control input-shadow" placeholder="Nouveau Mot de passe">
-                        <div class="form-control-position">
-                            <i class="icon-lock"></i>
-                        </div>
-                    </div>
-                </div>
 
                <button type="submit" name="valider" class="btn btn-light btn-block waves-effect waves-danger">Modiffier</button>
 

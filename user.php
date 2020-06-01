@@ -35,7 +35,7 @@
 						<div class="alert-message">
 							<span>
 								<font style="vertical-align: inherit;">
-									<font style="vertical-align: inherit;">Connexion Reussie! <br></font>
+									<font style="vertical-align: inherit;"><?= $_SESSION['flash']['success'] ?><br></font>
 								</font>
 							</span>
 						</div>
