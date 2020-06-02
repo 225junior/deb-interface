@@ -51,7 +51,7 @@
 
 <div class="row m-3">
 
-	<div class="col-3">
+	<div class="col-4">
 		<h4 class="text-left">Liste des Utilisateurs</h4>
 	</div>
 
@@ -89,7 +89,7 @@
 			<tbody>
 				<?php
 					require'config/config.php';
-					$req = $bd->prepare('SELECT * from utilisateur ORDER BY id_utilisateur DESC');
+					$req = $bd->prepare('SELECT * FROM utilisateur ORDER BY id_utilisateur DESC');
 					$req->execute();
 					while ($user = $req->fetch(PDO::FETCH_ASSOC)) {?>
 
@@ -100,7 +100,7 @@
 							<td><?= $user['email_utilisateur'] ?></td>
 							<td><?= $user['id_type_utilisateur'] ?></td>
 							<td>
-								<a class="btn btn-danger">Supprimer</a>
+								<a class="btn btn-danger" href="treatments/user-delete.php?id=<?= $user['id_utilisateur']?>">Supprimer</a>
 								<a class="btn btn-info" href="user-update.php?id=<?=$user['id_utilisateur']?>">Modiffier</a>
 							</td>
 						</tr>
