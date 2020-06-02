@@ -95,11 +95,11 @@
 							<td><?= $user['email_utilisateur'] ?></td>
 							<td><?= $user['id_type_utilisateur'] ?></td>
 							<td>
-								<a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Supprimer</a>
+								<a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<?=$user['id_utilisateur']?>">Supprimer</a>
 								<a class="btn btn-info"  href="user-update.php?id=<?=$user['id_utilisateur']?>">Modiffier</a>
 
 				<!-- Modal -->
-				<div class="modal fade bg-theme11" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade bg-theme11" id="exampleModal<?=$user['id_utilisateur']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				  <div class="modal-dialog bg-theme11" role="document">
 				    <div class="modal-content">
 				      <div class="modal-header bg-theme11">

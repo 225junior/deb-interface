@@ -93,29 +93,30 @@
 							<td><?= $module['quantite_module'] ?></td>
 							<td><?= $module['description_module'] ?></td>
 							<td>
-								<a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Supprimer</a>
+								<a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<?= $module['id_module'] ?>">Supprimer</a>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal<?= $module['id_module'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-danger" id="exampleModalLabel"><?= $module['libelle_module'] ?></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p style="color: black">Vous allez supprimer cet utilisateur. <br> ce genre d'actions sont IRRÉVERSIBLES. <br> Vous pouvez maintenant annuller la suppression <br> si ce n'est pas l'action désirée </p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" data-dismiss="modal">Annuler</button>
+				<a type="button" class="btn btn-danger" href="treatments/module-delete.php?id=<?= $module['id_module']?>">Confirmer la suppression</a>
+			</div>
+		</div>
+	</div>
+</div>
+
 								<a class="btn btn-info"  href="module-update.php?id=<?=$module['id_module']?>">Modiffier</a>
 
-				<!-- Modal -->
-				<div class="modal fade bg-theme11" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				  <div class="modal-dialog bg-theme11" role="document">
-				    <div class="modal-content">
-				      <div class="modal-header bg-theme11">
-				        <h5 class="modal-title text-danger" id="exampleModalLabel"><?= $module['libelle_module'] ?></h5>
-				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				          <span aria-hidden="true">&times;</span>
-				        </button>
-				      </div>
-				      <div class="modal-body">
-				        	<p style="color: black">Vous allez supprimer cet utilisateur. <br> ce genre d'actions sont IRRÉVERSIBLES. <br> Vous pouvez maintenant annuller la suppression <br> si ce n'est pas l'action désirée </p>
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-success" data-dismiss="modal">Annuler</button>
-				        <a type="button" class="btn btn-danger" href="treatments/module-delete.php?id=<?= $module['id_module']?>">Confirmer la suppression</a>
-				      </div>
-				    </div>
-				  </div>
-				</div>
 
 
 

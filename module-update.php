@@ -55,71 +55,45 @@
             require'config/config.php';
             $req = $bd->prepare('SELECT * FROM module WHERE id_module = ? ');
             $req->execute([$_GET['id']]);
-            $user = $req->fetch();
+            $module = $req->fetch();
+            if ($_POST) {
+                $errors = array();
 
-            if (!empty($_POST)) {
-                
-                $errors = array(); 
-     
-                if (empty($_POST['name'])) {
-                    $errors['name'] = "Nom Invalide (Alpha-Numerique)";
+               if (empty($_POST['libelle'])) {
+                        $errors['libelle'] = "Libelle Invalide (Alpha-Numerique)";
                 }
 
-                if (empty($_POST['firstname'])) {
-                    $errors['firstname'] = "Prénom Invalide (Alpha-Numerique)";
-                }
-                
-                if (empty($_POST['tel']) || !preg_match('/^[0-9_]+$/',$_POST['tel'])) {
-                    $errors['tel'] = "Erreur (Numerique Ex: 01020304)";
+                if (empty($_POST['description'])) {
+                        $errors['description'] = "Description Invalide (Alpha-Numerique)";
                 }
 
-                // si email est vide     ou      email ne respecte pas email format
-                if (empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL )) {
-                    // tableau errors ajoute le message
-                    $errors['email'] = "Email Invalide";
-                }else{
-                    // si email n'est pas vide, et email respecte le format 
-                    // verification si l'email est deja prise par un other user
-                    $req = $bd->prepare('SELECT id_utilisateur FROM utilisateur WHERE email_utilisateur = :email and id_utilisateur <> :id');
-                    $req->execute(['email' =>$_POST['email'],'id' =>$_GET['id']]);
-                    $otherUser = $req->fetch();
-                    // ajoute l'erreur dans le tableau erreur
-                    if ($otherUser) {
-                        $errors['email'] = 'Cette E-mail existe déjà Pour un autre compte'; 
-                    }
-                    }
+                if (empty($_POST['qte']) || !preg_match('/^[0-9_]+$/',$_POST['qte'])) {
+                        $errors['qte'] = "Quantité Invalide (Numerique)";
+                }
+                if (empty($errors)) {
+                    // Si le tabeau des erreurs est vide
+                    // debut de l'enregistrement
 
-                    if (empty($_POST['password'])) {
-                            $errors['password'] = "Mot de Passe Invalide";
-                    }
+                        $req = $bd->prepare("UPDATE module 
+                        SET libelle_module = ?,quantite_module = ?, description_module = ? WHERE `module`.`id_module` = ".$_GET['id']);
 
+                        $req->execute( [ $_POST['libelle'],$_POST['qte'],$_POST['description']]);
 
-                    if (empty($errors)) {
-                        // Si le tabeau des erreurs est vide
-                        // debut de l'enregistrement
-
-                            $req = $bd->prepare("UPDATE utilisateur 
-                            SET nom_utilisateur = ?,prenom_utilisateur = ?, telephone_utilisateur = ?,email_utilisateur = ?, motpass_utilisateur = ? WHERE `utilisateur`.`id_utilisateur` = ".$_GET['id']);
-
-                            $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-
-                            $req->execute( [ $_POST['name'],$_POST['firstname'],$_POST['tel'],$_POST['email'],$password  ]);
-                            $_SESSION['flash']['success'] = 'Modiffication Reusie!';
-                            echo '<script> document.location.replace("user.php"); </script>';
-                            exit();
-
-                    }
+                        $_SESSION['flash']['success'] = 'Modiffication Reusie!';
+                        echo '<script> document.location.replace("module.php"); </script>';
+                        exit();
+                }
             }
          ?>
 
 
 <div class="row m-3">
 
-	<div class="col-6">
-		<h4 class="text-left">Utilisateur → Modiffication : <span style="text-transform: uppercase;"> <?= $user['nom_utilisateur']?></span> <?= $user['prenom_utilisateur']?></h4>	
+	<div class="col-12">
+		<h4 class="text-left">Module → Modiffication : <span style="text-transform: uppercase;"> <?= $module['libelle_module']?></span></h4>
 	</div>
 
-</div>		
+</div>
 
 <div class="row m-3">
 
@@ -186,72 +160,30 @@
 
 
 
-            <form method="POST">
-
-                <!-- name name -->
-                <div class="form-group">
-                    <label for="exampleInputName" class="sr-only">Name</label>
-                    <div class="position-relative has-icon-right">
-                        <input type="text" name="name" value="<?= $user['nom_utilisateur']?>" id="exampleInputName" required class="form-control input-shadow" placeholder="Nom">
-                        <div class="form-control-position">
-                                <i class="icon-user"></i>
-                        </div>
-                    </div>
+             <form method="POST">
+                    <!-- name = libelle  -->
+               <div class="form-group" >
+                    <label for="input-1">Titre Du Module</label>
+                    <input type="text" name="libelle" value="<?= $module['libelle_module']?>" class="form-control" required id="input-1" placeholder="Titre Du Module">
                 </div>
 
-
-                <!-- name firstname -->
-                <div class="form-group">
-                    <label for="exampleInputfirstname" class="sr-only">Prenom</label>
-                    <div class="position-relative has-icon-right">
-                        <input type="text"  value="<?= $user['prenom_utilisateur']?>" name="firstname" id="exampleInputfirstname" required class="form-control input-shadow" placeholder="Prenom">
-                        <div class="form-control-position">
-                                <i class="icon-user"></i>
-                        </div>
-                    </div>
+                    <!-- name = qte -->
+                <div class="form-group" method="POST" >
+                    <label for="input-2">Quantité</label>
+                    <input type="number" name="qte" min="0" value="<?= $module['quantite_module']?>" class="form-control" required id="input-2" placeholder="Quantité">
                 </div>
 
-
-                <!-- name tel -->
+                    <!-- name = description -->
                 <div class="form-group">
-                    <label for="exampleInputTel" class="sr-only">Téléphone</label>
-                    <div class="position-relative has-icon-right">
-                        <input type="tel"  value="<?= $user['telephone_utilisateur']?>" name="tel" maxlength="8" minlength="8" required id="exampleInputTel" class="form-control input-shadow" placeholder="01020304">
-                        <div class="form-control-position">
-                            <i class="zmdi zmdi-account-box-mail"></i>
-                        </div>
-                    </div>
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" name="description" rows="3"><?= $module['description_module']?></textarea>
                 </div>
 
-
-
-                <!-- name email -->
+                    <!-- name = valider  -->
                 <div class="form-group">
-                    <label for="exampleInputEmailId" class="sr-only">Email</label>
-                    <div class="position-relative has-icon-right">
-                        <input type="email"  value="<?= $user['email_utilisateur']?>" name="email" id="exampleInputEmailId" required class="form-control input-shadow" placeholder="E-mail">
-                        <div class="form-control-position">
-                            <i class="icon-envelope-open"></i>
-                        </div>
-                    </div>
+                    <button type="submit" name="valider" class="btn btn-info px-5 btn-block">Modiffier</button>
                 </div>
-
-
-                <!-- name password -->
-              <div class="form-group">
-                <label for="exampleInputPassword" class="sr-only">Mot de passe</label>
-                    <div class="position-relative has-icon-right">
-                        <input type="password" id="exampleInputPassword" minlength="8" required name="password" class="form-control input-shadow" placeholder="Mot de passe actuel">
-                        <div class="form-control-position">
-                            <i class="icon-lock"></i>
-                        </div>
-                    </div>
-              </div>
-
-
-               <button type="submit" name="valider" class="btn btn-light btn-block waves-effect waves-danger">Modiffier</button>
-
-        </form>
+            </form>
 
 
 

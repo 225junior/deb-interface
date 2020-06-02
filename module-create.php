@@ -186,7 +186,7 @@
 
                     <!-- name = valider  -->
                 <div class="form-group">
-                    <button type="submit" name="valider" class="btn btn-info px-5 btn-block">Inscrire</button>
+                    <button type="submit" name="valider" class="btn btn-info px-5 btn-block">Enregistrer</button>
                 </div>
             </form>
 
