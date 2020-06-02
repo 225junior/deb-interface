@@ -27,7 +27,7 @@
 		</li>
 
 		<li>
-			<a href="bon_livraison_partiel.php">
+			<a href="module.php">
          	<i class="zmdi zmdi-assignment-check"></i> <span>Modules</span>
         	</a>
 		</li>
