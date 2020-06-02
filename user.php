@@ -45,10 +45,6 @@
 		?>
 
 
-<!--Start User Content-->
-
-
-
 <div class="row m-3">
 
 	<div class="col-4">
@@ -65,7 +61,6 @@
 <div class="row">
 		<div class="col-12 col-lg-12">
 			<div class="card">
-				<div class="card-header">5 Derniers Ajouts</div>
 				<div class="table-responsive">
 
 
@@ -89,7 +84,7 @@
 			<tbody>
 				<?php
 					require'config/config.php';
-					$req = $bd->prepare('SELECT * FROM utilisateur ORDER BY id_utilisateur DESC');
+					$req = $bd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur <> '.$_SESSION['auth']->id_utilisateur.'  ORDER BY id_utilisateur DESC');
 					$req->execute();
 					while ($user = $req->fetch(PDO::FETCH_ASSOC)) {?>
 
@@ -100,8 +95,32 @@
 							<td><?= $user['email_utilisateur'] ?></td>
 							<td><?= $user['id_type_utilisateur'] ?></td>
 							<td>
-								<a class="btn btn-danger" href="treatments/user-delete.php?id=<?= $user['id_utilisateur']?>">Supprimer</a>
-								<a class="btn btn-info" href="user-update.php?id=<?=$user['id_utilisateur']?>">Modiffier</a>
+								<a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Supprimer</a>
+								<a class="btn btn-info"  href="user-update.php?id=<?=$user['id_utilisateur']?>">Modiffier</a>
+
+				<!-- Modal -->
+				<div class="modal fade bg-theme11" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog bg-theme11" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header bg-theme11">
+				        <h5 class="modal-title text-danger" id="exampleModalLabel"><?= $user['nom_utilisateur'] ?> <?= $user['prenom_utilisateur'] ?></h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				        	<p style="color: black">Vous allez supprimer cet utilisateur. <br> ce genre d'actions sont IRRÉVERSIBLES. <br> Vous pouvez maintenant annuller la suppression <br> si ce n'est pas l'action désirée </p>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-success" data-dismiss="modal">Annuler</button>
+				        <a type="button" class="btn btn-danger" href="treatments/user-delete.php?id=<?= $user['id_utilisateur']?>">Confirmer la suppression</a>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+
+
+
 							</td>
 						</tr>
 				<?php } ?>
