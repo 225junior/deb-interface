@@ -18,3 +18,10 @@ function logged_only(){
         exit();
     }
 }
+
+function isAdmin(){
+    $admin = $_SESSION['auth']->id_type_utilisateur;
+    if ($admin == 1) {
+        return true;
+    }
+}

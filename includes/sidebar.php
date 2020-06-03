@@ -10,16 +10,25 @@
      </a>
    </div>
    <ul class="sidebar-menu do-nicescrol">
+      <?php 
+          if (isAdmin()) {?>
       <li>
         <a href="dashboard.php">
           <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
-		<li>
-			<a href="user.php">
-         	<i class="zmdi zmdi-accounts"></i> <span>Utilisateurs</span>
-        	</a>
-		</li>
+        		<li>
+        			<a href="user.php">
+                 	<i class="zmdi zmdi-accounts"></i> <span>Utilisateurs</span>
+                	</a>
+        		</li>
+            
+      <?php }?>
+    <li>
+      <a href="profile.php">
+          <i class="zmdi zmdi-accounts"></i> <span>Profile</span>
+          </a>
+    </li>  
 		<li>
 			<a href="projet.php">
          	<i class="zmdi zmdi-assignment"></i> <span>Projet</span>

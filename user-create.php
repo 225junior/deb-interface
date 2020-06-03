@@ -93,7 +93,7 @@
                     $errors['password'] = "Mot de Passe Invalide";
             }
 
-            if ($_POST['check']) {
+            if (isset($_POST['check'])) {
                 $check = 1;
             }else{
                 $check = 2;

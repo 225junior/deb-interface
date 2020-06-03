@@ -86,9 +86,9 @@
 
 					#affiche tous les champs de proj et user où idUser=id de celui qui est connecté 
 					# et range dans lordre decroissant des idProj
-					$req = $bd->prepare('SELECT * FROM projet p 
+					$req = $bd->prepare('SELECT * FROM projet p
 						INNER JOIN utilisateur u
-						WHERE u.id_utilisateur = '.$_SESSION['auth']->id_utilisateur
+						WHERE p.id_projet = '.$_SESSION['auth']->id_utilisateur
 						.' ORDER BY p.id_projet DESC');
 					$req->execute();
 				}
