@@ -22,26 +22,26 @@
     	<div class="container-fluid">
 
 		<?php
-				logged_only();
-			
-				if (!empty($_SESSION['flash'])) { ?>
-					
-					<div class="alert alert-success alert-dismissible" role="alert">
-						<button type="button" class="close" data-dismiss="alert">
-							<font style="vertical-align: inherit;">
-								<font style="vertical-align: inherit;">×</font>
-							</font>
-						</button>
-						<div class="alert-message">
-							<span>
-								<font style="vertical-align: inherit;">
-									<font style="vertical-align: inherit;">Connexion Reussie! <br></font>
-								</font>
-							</span>
-						</div>
-					</div>
+			logged_only();
+		
+			if (!empty($_SESSION['flash'])) { ?>
 				
-				<?php } $_SESSION['flash'] = null; 
+				<div class="alert alert-success alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert">
+						<font style="vertical-align: inherit;">
+							<font style="vertical-align: inherit;">×</font>
+						</font>
+					</button>
+					<div class="alert-message">
+						<span>
+							<font style="vertical-align: inherit;">
+								<font style="vertical-align: inherit;">Connexion Reussie! <br></font>
+							</font>
+						</span>
+					</div>
+				</div>
+			
+			<?php } $_SESSION['flash'] = null; 
 		?>
 
 
@@ -65,7 +65,7 @@
 <div class="row">
 		<div class="col-12 col-lg-12">
 			<div class="card">
-				<div class="card-header">5 Derniers Ajouts</div>
+				<div class="card-header">Liste de tous les Projets </div>
 				<div class="table-responsive">
 					<table class="table align-items-center table-flush table-borderless">
 						<thead>

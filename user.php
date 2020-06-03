@@ -22,26 +22,27 @@
     	<div class="container-fluid">
 
 		<?php
-				logged_only();
-			
-				if (!empty($_SESSION['flash'])) { ?>
-					
-					<div class="alert alert-success alert-dismissible" role="alert">
-						<button type="button" class="close" data-dismiss="alert">
-							<font style="vertical-align: inherit;">
-								<font style="vertical-align: inherit;">×</font>
-							</font>
-						</button>
-						<div class="alert-message">
-							<span>
-								<font style="vertical-align: inherit;">
-									<font style="vertical-align: inherit;"><?= $_SESSION['flash']['success'] ?><br></font>
-								</font>
-							</span>
-						</div>
-					</div>
+			// from include/functions retourne sur la page d'accueil celui qui n'est pas authentifié
+			logged_only();
+		
+			if (!empty($_SESSION['flash'])) { ?>
 				
-				<?php } $_SESSION['flash'] = null; 
+				<div class="alert alert-success alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert">
+						<font style="vertical-align: inherit;">
+							<font style="vertical-align: inherit;">×</font>
+						</font>
+					</button>
+					<div class="alert-message">
+						<span>
+							<font style="vertical-align: inherit;">
+								<font style="vertical-align: inherit;"><?= $_SESSION['flash']['success'] ?><br></font>
+							</font>
+						</span>
+					</div>
+				</div>
+			
+			<?php } $_SESSION['flash'] = null; 
 		?>
 
 
@@ -84,7 +85,8 @@
 			<tbody>
 				<?php
 					require'config/config.php';
-					$req = $bd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur <> '.$_SESSION['auth']->id_utilisateur.'  ORDER BY id_utilisateur DESC');
+
+					$req = $bd->prepare('SELECT * FROM utilisateur u INNER JOIN type_utilisateur t WHERE  u.id_type_utilisateur = t.id_type_utilisateur and id_utilisateur <> '.$_SESSION['auth']->id_utilisateur.'  ORDER BY id_utilisateur DESC');
 					$req->execute();
 					while ($user = $req->fetch(PDO::FETCH_ASSOC)) {?>
 
@@ -93,7 +95,7 @@
 							<td><?= $user['nom_utilisateur'] ?></td>
 							<td><?= $user['prenom_utilisateur'] ?></td>
 							<td><?= $user['email_utilisateur'] ?></td>
-							<td><?= $user['id_type_utilisateur'] ?></td>
+							<td><?= $user['libelle_type_utilisateur'] ?></td>
 							<td>
 								<a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<?=$user['id_utilisateur']?>">Supprimer</a>
 								<a class="btn btn-info"  href="user-update.php?id=<?=$user['id_utilisateur']?>">Modiffier</a>
