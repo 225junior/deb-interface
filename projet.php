@@ -91,6 +91,18 @@
 						WHERE u.id_utilisateur = '.$_SESSION['auth']->id_utilisateur
 						.' ORDER BY p.id_projet DESC');
 					$req->execute();
+				}
+				if ($_SESSION['auth']->id_type_utilisateur == '1') {
+					# on verifie si l'utilisateur connecté est admin(2) :: if [2]
+
+					#affiche tous les champs de proj et user où idUser=id de celui qui est connecté 
+					# et range dans lordre decroissant des idProj
+					$req = $bd->prepare('SELECT * FROM projet p
+						INNER JOIN utilisateur u
+						WHERE u.id_utilisateur = p.id_utilisateur
+						ORDER BY p.id_projet DESC');
+					$req->execute();
+				}
 
 					#while
 					while ($projet = $req->fetch(PDO::FETCH_ASSOC)) {?>
@@ -128,8 +140,7 @@
 
 							</td>
 						</tr>
-				<?php } #fin while
-				}#fin if[1] ?>
+				<?php } #fin while?>
 
 				
 			</tbody>
