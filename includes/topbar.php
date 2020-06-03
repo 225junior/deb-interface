@@ -34,7 +34,7 @@
         </li>
         <li class="dropdown-divider"></li>
         <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><a href="treatments/logout.php"><i class="icon-power mr-2"></i> Deconnexion</a></li>
+        <li class="dropdown-item" title="Vous partez déjà !" data-toggle="tooltip" data-placement="bottom"><a href="treatments/logout.php"><i class="icon-power mr-2"></i> Deconnexion</a></li>
       </ul>
     </li>
   </ul>

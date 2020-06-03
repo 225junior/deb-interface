@@ -46,7 +46,7 @@
 	<div class="card-content">
 		<div class="row row-group m-0">
 			<div class="col-12 col-lg-6 col-xl-3 border-light">
-				<div class="card-body">
+				<div class="card-body" title="Nombre total d'utilisateur" data-placement="bottom" data-toggle="tooltip">
 					<?php
 						require'config/config.php';
 						$req = $bd->prepare('SELECT * from utilisateur');
@@ -61,15 +61,23 @@
 					<p class="mb-0 text-white small-font">Total Utilisateurs</p>
 				</div>
 			</div>
+
 			<div class="col-12 col-lg-6 col-xl-3 border-light">
-				<div class="card-body">
-					<h5 class="text-white mb-0">8323 <span class="float-right"><i class="fa fa-usd"></i></span></h5>
+				<div class="card-body" title="Nombre total de Projets crée" data-toggle="tooltip">
+					<?php
+						require'config/config.php';
+						$req = $bd->prepare('SELECT * from projet');
+						$req->execute();
+						$nbProjet= $req->rowCount();
+					?>
+					<h5 class="text-white mb-0"><?= $nbProjet ?><span class="float-right"><i class="zmdi zmdi-assignment"></i></span></h5>
 					<div class="progress my-3" style="height:3px;">
 						<div class="progress-bar" style="width:55%"></div>
 					</div>
-					<p class="mb-0 text-white small-font">Total Revenue <span class="float-right">+1.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
+					<p class="mb-0 text-white small-font">Total Projet <span class="float-right">+1.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
 				</div>
 			</div>
+
 			<div class="col-12 col-lg-6 col-xl-3 border-light">
 				<div class="card-body">
 					<h5 class="text-white mb-0">6200 <span class="float-right"><i class="fa fa-eye"></i></span></h5>

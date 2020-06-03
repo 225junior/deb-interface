@@ -74,7 +74,7 @@
 		<table class="table align-items-center table-flush table-borderless">
 			<thead>
 				<tr>
-					<th width="10%">#</th>
+					<th width="10%" title="identifiant" data-toggle="tooltip">#</th>
 					<th width="20%">Nom</th>
 					<th width="25%">Prenoms</th>
 					<th width="10%">Email</th>

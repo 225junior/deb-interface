@@ -12,6 +12,8 @@
 ?>
 
 <?php
+				logged_only();
+	
 	if (!empty($_POST)) {
 			
 			require_once'config/config.php';

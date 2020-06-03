@@ -58,6 +58,7 @@
             
             require_once'config/config.php';
             require_once'includes/functions.php';
+
             $errors = array(); 
  
             if (empty($_POST['name'])) {
@@ -92,20 +93,24 @@
                     $errors['password'] = "Mot de Passe Invalide";
             }
 
-
+            if ($_POST['check']) {
+                $check = 1;
+            }else{
+                $check = 2;
+            }
             if (empty($errors)) {
                 // Si le tabeau des erreurs est vide
                 // debut de l'enregistrement
 
-                    $req = $bd->prepare("INSERT INTO utilisateur 
-                    SET nom_utilisateur = ?,prenom_utilisateur = ?, telephone_utilisateur = ?,email_utilisateur = ?, motpass_utilisateur = ?");
+                $req = $bd->prepare("INSERT INTO utilisateur 
+                SET nom_utilisateur = ?,prenom_utilisateur = ?, telephone_utilisateur = ?,email_utilisateur = ?, motpass_utilisateur =?,id_type_utilisateur = ?");
 
-                    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+                $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-                    $req->execute( [ $_POST['name'],$_POST['firstname'],$_POST['tel'],$_POST['email'],$password  ]);
+                $req->execute( [ $_POST['name'],$_POST['firstname'],$_POST['tel'],$_POST['email'],$password,$check ]);
 
-                    // message flash si enregistrement Bien déroulé
-                    $_SESSION['flash']['success'] = 'Enregistrement Effectué.';
+                // message flash si enregistrement Bien déroulé
+                $_SESSION['flash']['success'] = 'Enregistrement Effectué.';
 
             }
     }
@@ -214,9 +219,16 @@
                 </div>
 
                     <!-- name = password -->
-                <div class="form-group">
-                    <label for="input-4">Mot de passe</label>
-                    <input type="text" minlength="8"  name="password" required class="form-control" id="input-4" placeholder="Entrer le mot de passe">
+                <div class="form-row">
+                    <div class="form-group col-8">
+                        <label for="input-4">Mot de passe</label>
+                        <input type="text" minlength="8"  name="password" required class="form-control" id="input-4" placeholder="Entrer le mot de passe">
+                    </div>
+
+                    <div class="icheck-material-white form-group col-3 " style="margin-top: 40px">
+                        <input type="checkbox" id="user-checkbox" name="check">
+                        <label for="user-checkbox" title="En Cochant, vous pouvez faire ce cet utilisateur un administrateur" data-toggle="tooltip" data-placement="right">Administrateur ?</label>
+                    </div>
                 </div>
 
                     <!-- name = valider  -->
