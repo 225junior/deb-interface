@@ -52,7 +52,7 @@
 <!--Start Projet-Create Content-->
 <?php
             require'config/config.php';
-            $req = $bd->prepare('SELECT * FROM projet WHERE projet = ? ');
+            $req = $bd->prepare('SELECT * FROM projet WHERE id_projet = ? ');
             $req->execute([$_GET['id']]);
             $projet = $req->fetch();
 
@@ -67,12 +67,12 @@
                 // debut de l'enregistrement
 
                     $req = $bd->prepare("UPDATE projet 
-                    SET nom_projet = ?, WHERE `projet`.`id_projet` = ".$_GET['id']);
+                    SET nom_projet = ? WHERE `projet`.`id_projet` = ".$_GET['id']);
 
                     $req->execute( [ $_POST['libelle']]);
 
                     $_SESSION['flash']['success'] = 'Modiffication Reusie!';
-                    echo '<script> document.location.replace("module.php"); </script>';
+                    echo '<script> document.location.replace("projet.php"); </script>';
                     exit();
             }
             }
@@ -150,7 +150,6 @@
                         }?>
                         </div>
         <div class="card-body">
-
 
 
 
