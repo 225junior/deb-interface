@@ -61,7 +61,19 @@
  
             if (empty($_POST['libelle'])) {
                     $errors['libelle'] = "Libelle Invalide (Alpha-Numerique)";
+            }else{
+                // si email n'est pas vide, et email respecte le format 
+                // verification si email deja dans bd
+                    $req = $bd->prepare('SELECT id_categorie_equipement FROM categorie_equipement WHERE libelle_categorie_equipement = ? ');
+                    $req->execute([$_POST['libelle']]);
+                    $user = $req->fetch();
+                    // ajoute l'erreur dans le tableau erreur
+                    if ($user) {
+                        $errors['libelle'] = 'Cette Catégorie existe déjà'; 
+                    }
             }
+
+
 
             if (empty($errors)) {
                 // Si le tabeau des erreurs est vide
@@ -93,7 +105,7 @@
 
     <div class="col-lg-8">
         <div class="card">
-        <div class="card-header">Categorie equipement → Nouvelle
+        <div class="card-header">Categorie Equipement → Création
 
                 <?php if (!empty($_SESSION['flash']['danger'])) { ?>
                 
@@ -159,8 +171,8 @@
             <form method="POST">
                     <!-- name = libelle  -->
                <div class="form-group" >
-                    <label for="input-1">Titre De la categorie</label>
-                    <input type="text" name="libelle" class="form-control" required id="input-1" placeholder="Titre De la categorie equipement">
+                    <label for="input-1">Titre De la catégorie</label>
+                    <input type="text" name="libelle" class="form-control" required id="input-1" placeholder="Titre De la catégorie d'équipement">
                 </div>
 
                   <!-- name = valider  -->

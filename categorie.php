@@ -48,11 +48,11 @@
 <div class="row m-3">
 
 	<div class="col-4">
-		<h4 class="text-left">Liste des categories equipements</h4>
+		<h5 class="text-left">Liste des categories d'équipements</h5>
 	</div>
 
-	<div class="col-5 offset-4">
-		<a class="btn btn-light" href="categorie-create.php">Ajouter une nouvelle categorie equipementsq</a>
+	<div class="col-4 offset-4">
+		<a class="btn btn-light" href="categorie-create.php">Ajouter une categorie</a>
 	</div>
 </div>
 
@@ -74,7 +74,7 @@
 			<thead>
 				<tr>
 					<th width="10%">#</th>
-					<th width="20%">Libéllé</th>
+					<th width="20%">Titre de catégorie</th>
 					<th width="25%"></th>
 				</tr>
 			</thead>
@@ -87,7 +87,7 @@
 
 						<tr>
 							<td><?= $categorie_equipement['id_categorie_equipement'] ?></td>
-							<td><?= $categorie_equipement['libelle_categorie_equipement'] ?></td>
+							<td><a title="Cliquez Ici Pour ajouter des Equipements à cette Catégories" data-toggle="tooltip" data-placement="bottom" href="equippements.php?categorie=<?= $categorie_equipement['id_categorie_equipement'] ?>"><?= $categorie_equipement['libelle_categorie_equipement'] ?> </a></td>
 							<td>
 								<a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<?= $categorie_equipement['id_categorie_equipement'] ?>">Supprimer</a>
 <!-- Modal -->

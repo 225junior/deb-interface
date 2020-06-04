@@ -43,15 +43,9 @@
 
     <li>
       <a href="categorie.php">
-          <i class="zmdi zmdi-assignment-check"></i> <span>Catégorie</span>
+          <i class="zmdi zmdi-assignment-check"></i> <span>Catégorie d'équipement</span>
           </a>
     </li>
-
-		<li>
-			<a href="equippements.php">
-         	<i class="zmdi zmdi-assignment-check"></i> <span>Équiprements</span>
-        	</a>
-		</li>
 
 		<li>
 			<a href="aquippement_livre.php">
