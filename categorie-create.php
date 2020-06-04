@@ -19,7 +19,6 @@
 
 
 
-
 <div class="clearfix"></div>
     
     <div class="content-wrapper">

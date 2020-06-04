@@ -4,5 +4,5 @@ if (isset($_GET['id'])) {
 	$sql = "DELETE FROM categorie_equipement WHERE id_categorie_equipement = ? ";
 	$req = $bd->prepare($sql);
 	$req->execute([$_GET['id']]);
-	echo '<script> document.location.replace("../categorie_equipement.php"); </script>';
+	echo '<script> document.location.replace("../categorie.php"); </script>';
 }

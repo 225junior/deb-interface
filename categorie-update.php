@@ -73,7 +73,7 @@
                         $req->execute( [ $_POST['libelle']]);
 
                         $_SESSION['flash']['success'] = 'Modification Reusie!';
-                        echo '<script> document.location.replace("categorie_equipement.php"); </script>';
+                        echo '<script> document.location.replace("categorie.php"); </script>';
                         exit();
                 }
             }

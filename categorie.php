@@ -52,7 +52,7 @@
 	</div>
 
 	<div class="col-5 offset-4">
-		<a class="btn btn-light" href="categorie_equipement-create.php">Ajouter une nouvelle categorie equipementsq</a>
+		<a class="btn btn-light" href="categorie-create.php">Ajouter une nouvelle categorie equipementsq</a>
 	</div>
 </div>
 
@@ -105,13 +105,13 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success" data-dismiss="modal">Annuler</button>
-				<a type="button" class="btn btn-danger" href="treatments/categorie_equipement-delete.php?id=<?= $categorie_equipement['id_categorie_equipement']?>">Confirmer la suppression</a>
+				<a type="button" class="btn btn-danger" href="treatments/categorie-delete.php?id=<?= $categorie_equipement['id_categorie_equipement']?>">Confirmer la suppression</a>
 			</div>
 		</div>
 	</div>
 </div>
 
-		<a class="btn btn-info"  href="categorie_equipement-update.php?id=<?=$categorie_equipement['id_categorie_equipement']?>">Modiffier</a>
+		<a class="btn btn-info"  href="categorie-update.php?id=<?=$categorie_equipement['id_categorie_equipement']?>">Modiffier</a>
 
 
 
