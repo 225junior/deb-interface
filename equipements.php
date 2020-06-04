@@ -84,10 +84,11 @@
 		<table class="table align-items-center table-flush table-borderless">
 			<thead>
 				<tr>
-					<th width="10%">#</th>
+					<th width="5%">#</th>
 					<th width="20%">Equipement</th>
-					<th width="20%">QTE</th>
-					<th width="20%">Unité</th>
+					<th width="10%">QTE</th>
+					<th width="10%">Unité</th>
+					<th width="*">Description</th>
 					<th width="25%"></th>
 				</tr>
 			</thead>
@@ -103,6 +104,7 @@
 							<td><?= $equipement['nom'] ?></td>
 							<td><?= $equipement['quantite'] ?></td>
 							<td><?= $equipement['unite'] ?></td>
+							<td><?= $equipement['description_equipement'] ?></td>
 							<td>
 								<a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<?= $equipement['id_equipement'] ?>">Supprimer</a>
 <!-- Modal -->
@@ -120,7 +122,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success" data-dismiss="modal">Annuler</button>
-				<a type="button" class="btn btn-danger" href="treatments/categorie-delete.php?id=<?= $equipement['id_equipement'] ?>">Confirmer la suppression</a>
+				<a type="button" class="btn btn-danger" href="treatments/equipement-delete.php?categorie=<?= $id_cat?>&&id=<?= $equipement['id_equipement'] ?>">Confirmer la suppression</a>
 			</div>
 		</div>
 	</div>

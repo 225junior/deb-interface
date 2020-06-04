@@ -87,7 +87,7 @@
 
 						<tr>
 							<td><?= $categorie_equipement['id_categorie_equipement'] ?></td>
-							<td><a title="Cliquez Ici Pour ajouter des Equipements à cette Catégories" data-toggle="tooltip" data-placement="bottom" href="equippements.php?categorie=<?= $categorie_equipement['id_categorie_equipement'] ?>"><?= $categorie_equipement['libelle_categorie_equipement'] ?> </a></td>
+							<td><a title="Cliquez Ici Pour ajouter des Equipements à cette Catégories" data-toggle="tooltip" data-placement="right" href="equipements.php?categorie=<?= $categorie_equipement['id_categorie_equipement'] ?>"><?= $categorie_equipement['libelle_categorie_equipement'] ?> </a></td>
 							<td>
 								<a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<?= $categorie_equipement['id_categorie_equipement'] ?>">Supprimer</a>
 <!-- Modal -->
