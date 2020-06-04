@@ -63,7 +63,7 @@
 	</div>
 
 	<div class="col-5 offset-3">
-		<a class="btn btn-light" href="categorie-create.php">Ajouter un Equipement à cette Catégorie</a>
+		<a class="btn btn-light" href="equipement-create.php?categorie=<?=$id_cat?>">Ajouter un Equipement à cette Catégorie</a>
 	</div>
 </div>
 

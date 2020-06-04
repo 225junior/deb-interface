@@ -54,6 +54,15 @@
 
 
         <?php 
+        	// recuperation de l'identifiant de la categirie en GET
+				$id_cat = $_GET['categorie'];
+
+				// recuperation du libelle de la cetegorier
+				require 'config/config.php';
+				$req0 = $bd->prepare('SELECT * FROM categorie_equipement WHERE id_categorie_equipement ='.$id_cat);
+				$req0->execute();
+				$categorie = $req0->fetch();
+
             if (!empty($_POST)) {
             
             require_once'config/config.php';
@@ -72,17 +81,21 @@
                     $errors['qte'] = "Quantité Invalide (Numerique)";
             }
 
+            if (empty($_POST['unite']) || !preg_match('/^[0-9_]+$/',$_POST['qte'])) {
+                    $errors['unite'] = "Unité Invalide (Numerique)";
+            }
+
             if (empty($errors)) {
                 // Si le tabeau des erreurs est vide
                 // debut de l'enregistrement
 
-                    $req = $bd->prepare("INSERT INTO module 
-                    SET libelle_module = ?,quantite_module = ?, description_module = ?");
+                    $req = $bd->prepare("INSERT INTO equipement
+                    SET nom = ?,quantite = ?,unite = ?, description_equipement = ?, id_categorie_equipement = ?");
 
-                    $req->execute( [ $_POST['libelle'],$_POST['qte'],$_POST['description']]);
+                    $req->execute( [ $_POST['libelle'],$_POST['qte'],$_POST['unite'],$_POST['description'],$_GET['categorie']]);
 
-                    // message flash si enregistrement Bien déroulé
-                    $_SESSION['flash']['success'] = 'Enregistrement Effectué.';
+					echo '<script> document.location.replace("equipements.php?categorie='.$_GET['categorie'].'"); </script>';
+					
 
             }
     }
@@ -102,7 +115,7 @@
 
     <div class="col-lg-8">
         <div class="card">
-        <div class="card-header">Module → Nouveau
+        <div class="card-header"><?= $categorie['libelle_categorie_equipement'] ?> → Equipement Creation
 
                 <?php if (!empty($_SESSION['flash']['danger'])) { ?>
                 
@@ -168,14 +181,20 @@
             <form method="POST">
                     <!-- name = libelle  -->
                <div class="form-group" >
-                    <label for="input-1">Titre Du Module</label>
-                    <input type="text" name="libelle" class="form-control" required id="input-1" placeholder="Titre Du Module">
+                    <label for="input-1">Libelle De L'équipement</label>
+                    <input type="text" name="libelle" class="form-control" required id="input-1" placeholder="Libelle De L'équipement">
                 </div>
 
                     <!-- name = qte -->
-                <div class="form-group">
+                <div class="form-group" >
                     <label for="input-2">Quantité</label>
                     <input type="number" name="qte" min="0" class="form-control" required id="input-2" placeholder="Quantité">
+                </div>
+
+                     <!-- name = unite -->
+                <div class="form-group" >
+                    <label for="input-unite">Unité</label>
+                    <input type="number" name="unite" min="0" class="form-control" required id="input-unite" placeholder="Unité">
                 </div>
 
                     <!-- name = description -->
