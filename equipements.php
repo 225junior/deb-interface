@@ -122,13 +122,13 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success" data-dismiss="modal">Annuler</button>
-				<a type="button" class="btn btn-danger" href="treatments/equipement-delete.php?categorie=<?= $id_cat?>&&id=<?= $equipement['id_equipement'] ?>">Confirmer la suppression</a>
+				<a type="button" class="btn btn-danger" href="treatments/equipement-delete.php?categorie=<?= $id_cat?>&id=<?= $equipement['id_equipement'] ?>">Confirmer la suppression</a>
 			</div>
 		</div>
 	</div>
 </div>
 
-		<a class="btn btn-info"  href="categorie-update.php?id=<?= $equipement['id_equipement'] ?>">Modiffier</a>
+		<a class="btn btn-info"  href="equipement-update.php?categorie=<?= $id_cat ?>&id=<?= $equipement['id_equipement'] ?>">Modiffier</a>
 
 
 

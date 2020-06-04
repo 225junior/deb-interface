@@ -63,6 +63,10 @@
 				$req0->execute();
 				$categorie = $req0->fetch();
 
+				$req1 = $bd->prepare('SELECT * FROM equipement WHERE id_equipement = ? ');
+	            $req1->execute([$_GET['id']]);
+	            $equipement = $req1->fetch();
+
             if (!empty($_POST)) {
             
             require_once'config/config.php';
@@ -89,14 +93,13 @@
                 // Si le tabeau des erreurs est vide
                 // debut de l'enregistrement
 
-                    $req = $bd->prepare("INSERT INTO equipement
-                    SET nom = ?,quantite = ?,unite = ?, description_equipement = ?, id_categorie_equipement = ?");
+                    $req = $bd->prepare("UPDATE equipement
+                    SET nom = ?,quantite = ?,unite = ?, description_equipement = ?, id_categorie_equipement = ? WHERE id_equipement = ?");
 
-                    $req->execute( [ $_POST['libelle'],$_POST['qte'],$_POST['unite'],$_POST['description'],$_GET['categorie']]);
+                    $req->execute( [ $_POST['libelle'],$_POST['qte'],$_POST['unite'],$_POST['description'],$_GET['categorie'] ,$_GET['id']]);
 
 					echo '<script> document.location.replace("equipements.php?categorie='.$_GET['categorie'].'"); </script>';
-					
-
+					exit();
             }
     }
         ?>
@@ -182,25 +185,25 @@
                     <!-- name = libelle  -->
                <div class="form-group" >
                     <label for="input-1">Libelle De L'équipement</label>
-                    <input type="text" name="libelle" class="form-control" required id="input-1" placeholder="Libelle De L'équipement">
+                    <input type="text" name="libelle" class="form-control" value="<?= $equipement['nom'] ?>" required id="input-1" placeholder="Libelle De L'équipement">
                 </div>
 
                     <!-- name = qte -->
                 <div class="form-group" >
                     <label for="input-2">Quantité</label>
-                    <input type="number" name="qte" min="0" class="form-control" required id="input-2" placeholder="Quantité">
+                    <input type="number" name="qte" min="0" value="<?= $equipement['quantite'] ?>" class="form-control" required id="input-2" placeholder="Quantité">
                 </div>
 
                      <!-- name = unite -->
                 <div class="form-group" >
                     <label for="input-unite">Unité</label>
-                    <input type="number" name="unite" min="0" class="form-control" required id="input-unite" placeholder="Unité">
+                    <input type="number" name="unite" min="0" value="<?= $equipement['unite'] ?>" class="form-control" required id="input-unite" placeholder="Unité">
                 </div>
 
                     <!-- name = description -->
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea class="form-control" id="description" name="description" rows="3" maxlength="60"></textarea>
+                    <textarea class="form-control" id="description" name="description" rows="3" maxlength="60"><?= $equipement['description_equipement'] ?></textarea>
                 </div>
 
                     <!-- name = valider  -->
