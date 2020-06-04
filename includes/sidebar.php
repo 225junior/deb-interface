@@ -41,8 +41,14 @@
         	</a>
 		</li>
 
+    <li>
+      <a href="categorie.php">
+          <i class="zmdi zmdi-assignment-check"></i> <span>Catégorie</span>
+          </a>
+    </li>
+
 		<li>
-			<a href="bon_livraison.php">
+			<a href="equippements.php">
          	<i class="zmdi zmdi-assignment-check"></i> <span>Équiprements</span>
         	</a>
 		</li>
