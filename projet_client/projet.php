@@ -245,8 +245,7 @@ include "assets/php/query.php";
          <?php 
 
 
-
-    while ($row_projet=$statement_projet->fetch()) 
+            while ($row_projet=$statement_projet->fetch()) 
             {
                                                 $id_utilisateur=$row_projet['id_utilisateur'];
                                                 $query_utilisateur="SELECT * FROM utilisateur WHERE id_utilisateur=:id_utilisateur ";
@@ -274,6 +273,17 @@ include "assets/php/query.php";
 </div>
 </div>
 </div>
+
+<div class="row m-3">
+
+  <div class="col-3">
+    <h4 class="text-left">Affiliation des projets</h4>  
+  </div>
+
+  <div class="col-4 offset-4">
+    <a class="btn btn-light" href="projet_produit-create.php">Affilier les produits au projets</a>   
+  </div>
+</div> 
 
 <!--End topbar header-->
  <!--<div class="clearfix"></div>

@@ -3,7 +3,7 @@ header('Content-Type= text/csv');
 try
 {
 
-$pdo= new PDO('mysql:host=localhost;dbname=interface','test','123456789');
+$pdo= new PDO('mysql:host=localhost;dbname=gcs','root','');
 
 }
 catch (PDOException $e)

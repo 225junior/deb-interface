@@ -31,7 +31,7 @@ $query_date="SELECT NOW()";
 $statement_date=$pdo->prepare($query_date);
 $statement_date->execute();
 $date=$statement_date->fetch();
-
+ 
 
 //Rappel
 //$query_rappel="SELECT * FROM rappel";

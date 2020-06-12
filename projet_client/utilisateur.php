@@ -82,11 +82,11 @@ include "assets/php/query.php";
         </a>
       </li>
 
-   li>
-      <a href="projet_produit.php">
-          <i class="zmdi zmdi-assignment-o"></i> <span>Projets_Produits</span>
-          </a>
-    </li>
+   <li>
+        <a href="projet_produit.php">
+        <i class="zmdi zmdi-assignment-o"></i> <span>Projets_Produits</span>
+        </a>
+  
 
 
       <!--<li>
@@ -94,7 +94,7 @@ include "assets/php/query.php";
           <i class="zmdi zmdi-face"></i> <span>Profile</span>
         </a>
       </li>
-
+  </li>
       <li>
         <a href="login.html" target="_blank">
           <i class="zmdi zmdi-lock"></i> <span>Login</span>

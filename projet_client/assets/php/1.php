@@ -2,7 +2,7 @@
 include ("config.php");
 try 
 {
-  if (isset($_POST['addprojetproduit'])) 
+  if (isset($_POST['addprojet'])) 
   {
     # code...
     //recuperation des variables a partir du formulaire
@@ -15,16 +15,27 @@ try
          $statut_produit=$_POST['statut_produit']
 
 
-    //requete pour verifier que la catégorie est unique
-
+    //requete pour verifier que la catégorie est unique 
+        $queryidprojet="SELECT * FROM appartenir WHERE id_projet=?";
+        $verifidprojet=$pdo->prepare($queryidprojet,array(PDO::ATTR_CURSOR=>PDO::CURSOR_FWDONLY));
+        $verifidprojet->execute(array($id_projet));
 
         if ($countidprojet=$verifidprojet->fetch()) 
         {
          
+        //requete pour verifier que la catégorie est unique 
+        $queryidproduit="SELECT * FROM appartenir WHERE id_produit=?";
+        $verifidproduit=$pdo->prepare($queryidproduit,array(PDO::ATTR_CURSOR=>PDO::CURSOR_FWDONLY));
+        $verifidproduit->execute(array($id_produit));
 
         if ($countidproduit=$verifidproduit->fetch()) 
         {
 
+
+          //requete pour verifier que la catégorie est unique 
+        $queryquantite="SELECT * FROM appartenir WHERE quantite_produit=?";
+        $verifquantite=$pdo->prepare($queryquantite,array(PDO::ATTR_CURSOR=>PDO::CURSOR_FWDONLY));
+        $verifquantite->execute(array($quantite_produit));
 
         if ($countquantite=$verifquantite->fetch()) 
         {

@@ -237,32 +237,41 @@ include "assets/php/query.php";
           <th width="25%">Produit</th>
           <th width="25%">Quantite</th>
           <th width="25%">statut</th>
+          <th width="25%">Actions</th>
         </tr>
       </thead>
       <tbody>
 
 
-       
-       <!--   <?php 
+       <?php 
+                                        while ($row_equiplivre=$statement_equiplivre->fetch()) 
+                                            {
+                                                
+                                                                                              //requete d'affichage des produits
+                                                $query_produit="SELECT * FROM produit";
+                                                $statement_produit=$pdo->prepare($query_produit);
+                                                $statement_produit->execute();
 
+                                                //requete d'affichage des produits
+                                                $query_projet="SELECT * FROM projet";
+                                                $statement_projet=$pdo->prepare($query_projet);
+                                                $statement_projet->execute();
 
+                                                echo "<tr>";
+                                                echo "<td ><strong>".$row_equiplivre['nom_projet']." ".$row_produit['nom_produit']."</strong></td>";
+                                                echo "<td>".$row_quantite['quantite_produit']."</td>";
+                                                echo "<td>".$row_equiplivre['statut_produit']."</td>";
+                                                // echo "<td>".$row_maint['priority_customer']."</td>";
+                                                //echo "<td><i class='zmdi zmdi-edit'></i></td>";
+                                                //echo "<td><span class='zmdi zmdi-delete'></span></td>";
+                                                //echo "</tr>";
 
-    //while ($row_projet=$statement_projet->fetch()) 
-            {
-
-                        //echo "<tr>";
-                        //echo "<td>
-                        //<p class='c_name'>".$row_projet['nom_projet']."</p></td>";
-                        //echo "<td> <a class='btn btn-info' href='projet-update.php?'>Modifier</a> <a class='btn btn-danger'data-toggle='modal' data-target='#exampleModal' href='delete/delete_projet.php?'id_projet=$row_projet[id_projet]\"return confirm('Voulez-vous vraiment supprimer ce projet ?')\'>Supprimer</a></td>";
-                        //echo"<td>  </td>";
-                        //echo "</tr>";
-                                               
-                                               
-
-            } 
-
-            ?>
-        -->
+                                                echo "<td><a class='btn btn-info'>Modifier</a></td>";
+                                               // echo "<a class='btn btn-danger'>Supprimer</a></td>  ";
+                                                  //echo"<td>  </td>";
+                                                 echo "</tr>";                                                    
+                                           }
+                                    ?>
       </tbody>
     </table>
   </div>
