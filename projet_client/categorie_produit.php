@@ -245,7 +245,7 @@ include "assets/php/query.php";
                         echo "<tr>";
                         echo "<td>
                         <p class='c_name'>".$row_categorie_produit['libelle_categorie_produit']."</p></td>";
-                      echo "<td><a class='btn btn-info' href='categorie_produit-update.php?'>Modifier</a> <a class='btn btn-danger' href='delete/delete_categorie_produit.php?id_categorie_produit=$row_categorie_produit[id_categorie_produit]\" onClick=\"return confirm('Voulez-vous vraiment supprimer cette categorie produit ?')\'>Supprimer</a></td>";
+                      echo "<td><a class='btn btn-info' href='modifier/modifier_categorie.php?id_categorie_produit=$row_categorie_produit[id_categorie_produit]'>Modifier</a> <a class='btn btn-danger' href='delete/delete_categorie_produit.php?id_categorie_produit=$row_categorie_produit[id_categorie_produit]\" onClick=\"return confirm('Voulez-vous vraiment supprimer cette categorie produit ?')\'>Supprimer</a></td>";
                           //echo"<td>  </td>";
                           echo "</tr>";
                                          
