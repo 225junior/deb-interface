@@ -1034,12 +1034,12 @@ body.bg-theme15 {
 
 .btn-light{
 	color: #fff;
-	background-color: rgba(255,255,255,.125);
+	background-color: rgb(76, 175, 80);
 	border-color: rgba(255,255,255,.125);
 }
 .btn-light:hover {
 	color: #fff;
-	background-color: rgba(255, 255, 255, 0.18);
+	background-color:rgb(27, 132, 31);
 	border-color: rgba(255, 255, 255, 0.18);
 }
 .btn-light.focus, .btn-light:focus {
@@ -1052,7 +1052,7 @@ body.bg-theme15 {
 }
 .btn-light:not(:disabled):not(.disabled).active, .btn-light:not(:disabled):not(.disabled):active, .show>.btn-light.dropdown-toggle {
 	color: #fff;
-	background-color: rgba(255,255,255,.125);
+	background-color: rgb(27, 132, 31);
 	border-color: rgba(255,255,255,.125);
 }
 .btn-light:not(:disabled):not(.disabled).active:focus, .btn-light:not(:disabled):not(.disabled):active:focus, .show>.btn-light.dropdown-toggle:focus {
