@@ -243,23 +243,21 @@ include "assets/php/query.php";
 
 
 
-                                            while ($row_produit=$statement_produit->fetch()) 
-                                        {
-                                                $id_categorie_produit=$row_produit['id_categorie_produit'];
-                                                $query_categorie_produit="SELECT * FROM categorie_produit WHERE id_categorie_produit=:id_categorie_produit ";
-                                                $statement_categorie_produit=$pdo->prepare($query_categorie_produit);
-                                                $statement_categorie_produit->execute(array(':id_categorie_produit'=>$id_categorie_produit));
-                                                $row_categorie_produit=$statement_categorie_produit->fetch();
+          while ($row_produit=$statement_produit->fetch()) 
+      {
+              $id_categorie_produit=$row_produit['id_categorie_produit'];
+              $query_categorie_produit="SELECT * FROM categorie_produit WHERE id_categorie_produit=:id_categorie_produit ";
+              $statement_categorie_produit=$pdo->prepare($query_categorie_produit);
+              $statement_categorie_produit->execute(array(':id_categorie_produit'=>$id_categorie_produit));
+              $row_categorie_produit=$statement_categorie_produit->fetch();
 
-                        echo "<tr>";
-                        echo "<td><p class='c_name'>".$row_produit['nom_produit']."</p></td>";
-                        echo "<td><p class='c_name'>".$row_produit['description_produit']."</p></td>";
-                        echo "<td><i class=''></i>".$row_categorie_produit['libelle_categorie_produit']."</td>";
-                        echo "<td><a class='btn btn-info' href='modifier/modifier_produit.php?id_produit=$row_produit[id_produit]'>Modifier</a>  <a class='btn btn-danger' href='delete/delete_produit.php?id_produit=$row_produit[id_produit]\" onClick=\"return confirm('Voulez-vous vraiment supprimer ce produit')\'>Supprimer</a></td>";
-                                                  //echo"<td>  </td>";
-                        echo "</tr>";
-                                               
-                                               
+              echo "<tr>";
+              echo "<td><p class='c_name'>".$row_produit['nom_produit']."</p></td>";
+              echo "<td><p class='c_name'>".$row_produit['description_produit']."</p></td>";
+              echo "<td><i class=''></i>".$row_categorie_produit['libelle_categorie_produit']."</td>";
+              echo "<td><a class='btn btn-info' href='modifier/modifier_produit.php?id_produit=$row_produit[id_produit]'>Modifier</a>  <a class='btn btn-danger' href='delete/delete_produit.php?id_produit=$row_produit[id_produit]\" onClick=\"return confirm('Voulez-vous vraiment supprimer ce produit')\'>Supprimer</a></td>";
+                                        //echo"<td>  </td>";
+              echo "</tr>";
 
             } 
 

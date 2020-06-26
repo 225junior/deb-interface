@@ -35,7 +35,7 @@ body {
 }
 
 select option {
-    background: #000;
+    background: rgba(6, 50, 70, 0.58)
 }
 /*
 ::placeholder {

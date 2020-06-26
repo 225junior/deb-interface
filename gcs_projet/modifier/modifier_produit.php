@@ -277,11 +277,11 @@ include "../assets/php/query.php";
 
                     $id = $_GET['id_produit'];
 
-                    $query_produit= "SELECT * FROM produit WHERE id_produit =:id";
-                    $query_prepare=$pdo->prepare($query_categorie);
+                    $query_produit= "SELECT * FROM produit p INNER JOIN categorie_produit c ON p.id_categorie_produit = c.id_categorie_produit WHERE p.id_produit =:id";
+                    $query_prepare=$pdo->prepare($query_produit);
                     $query_prepare->execute(array(':id'=>$id));
                     $produit=$query_prepare->fetch();
-
+                    
                     echo "<input type='text' name='nom_produit' value='$produit[nom_produit]' class='form-control' id='input-1' required>";
 
                      echo "<input type='hidden' name='id' value='$id'>"
@@ -291,22 +291,24 @@ include "../assets/php/query.php";
                     <!-- name = description -->
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea class="form-control" id="description" name="description_produit" rows="3" maxlength="60"></textarea>
+                    <textarea class="form-control" id="description" name="description_produit" rows="3" maxlength="60"><?php echo $produit["description_produit"] ; ?> </textarea>
                 </div>
 
                 <!-- name = id_cat_produit-->
 
+
                 <div class="form-group form-float">
                   <label for="categorie_produit"> categorie produit</label>
-                                    <select class="form-control" required="" name="id_categorie_produit">
-                                               <?php
-                                                  while($row_categorie_produit=$statement_categorie_produit->fetch())
-                                                    {
-                                                        echo "<option value=".$row_categorie_produit['id_categorie_produit'].">". $row_categorie_produit['libelle_categorie_produit']." </option>";
-                                                    }
-                                                ?>
-                                    </select>
-                                </div>
+                    <select class="form-control" required="" name="id_categorie_produit">
+                       <?php
+                        echo "<option selected value=".$produit['id_categorie_produit'].">". $produit['libelle_categorie_produit']." </option>";
+                          while($row_categorie_produit=$statement_categorie_produit->fetch())
+                            {
+                                echo "<option value=".$row_categorie_produit['id_categorie_produit'].">". $row_categorie_produit['libelle_categorie_produit']." </option>";
+                            }
+                        ?>
+                    </select>
+                </div>
 
 
                   <!-- name = valider  -->
