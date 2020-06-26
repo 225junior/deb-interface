@@ -1,8 +1,7 @@
-<?php 
+<?php
+#accessible seulement a celui qui est connecté si tu es connecté
 //connexion base de données
 include("config.php");
-
-session_start();
 //On verifie que l'utilisateur appuie sur le button de connexion
 if(isset($_POST['login']))
 {
@@ -27,12 +26,12 @@ if(isset($_POST['login']))
 
         if($count > 0)
             {
-                 $userinfo=$statement->fetch();
-                 $_SESSION['nom_utilisateur']=$userinfo['nom_utilisateur'];
-                 $_SESSION['prenom_utilisateur']=$userinfo['prenom_utilisateur'];
-                 $_SESSION['email_utilisateur']= $_POST['email_utilisateur'];
-                 $_SESSION['id_typutilisateur']= $_POST['id_typutilisateur'];
-                 $_SESSION['tel_utilisateur']=$userinfo['tel_utilisateur'];
+                 $userinfo=$statement->fetchObject();
+                 $_SESSION['nom_utilisateur']   =$userinfo->nom_utilisateur;
+                 $_SESSION['prenom_utilisateur']=$userinfo->prenom_utilisateur;
+                 $_SESSION['email_utilisateur'] = $userinfo->email_utilisateur;
+                 $_SESSION['id_typutilisateur'] = $userinfo->id_typutilisateur;
+                 $_SESSION['tel_utilisateur']   =$userinfo->tel_utilisateur;
 
 
                  // //redirection selon le type d'utilisateur
@@ -56,6 +55,7 @@ if(isset($_POST['login']))
             }
         else if($count == 0)
             {
+
              ?>        
              <script type="text/javascript">
                 alert('Compte inexistant, Veuillez créer un compte svp!');
@@ -84,7 +84,13 @@ if(isset($_POST['login']))
              <?php
 
     }
-    
+}else{
+    ?>
+     <script type="text/javascript">
+        alert('Connectez Vous pour acceder à la plateforme');
+        setTimeout(function(){window.location.href="../../login.html";},100);
+     </script>
+     <?php
 }
 
  ?>
