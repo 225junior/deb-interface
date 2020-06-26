@@ -1,5 +1,4 @@
 <?php
-require_once "assets/php/auth0.php";
 include 'assets/php/functions.php';
 logged_only();
 include "assets/php/config.php";
@@ -137,7 +136,7 @@ include "assets/php/query.php";
         <div class="row row-group m-0">
             <!--<div class="col-12 col-lg-6 col-xl-3 border-light">
                 <div class="card-body">
-                  <p class="mb-0 text-white small-font"><a href=liste_équipements_livres.php>Liste de tous les équipements </a></p>
+                  <p class="mb-0 text-white small-font"><a href=liste_ï¿½quipements_livres.php>Liste de tous les ï¿½quipements </a></p>
                 </div>
             </div>-->
             <div class="col-12 col-lg-6 col-xl-6 border-light">
@@ -226,33 +225,33 @@ include "assets/php/query.php";
                    <tbody>
                     <?php
 
-                                            // while ($row_appartenir=$statement_appartenir->fetch())
-                                            // {
-                                            //     $id_projet=$row_projet['id_projet'];
-                                            //     $query_projet="SELECT * FROM projet WHERE id_projet=:id_projet ";
-                                            //     $statement_projet=$pdo->prepare($query_projet);
-                                            //     $statement_projet->execute(array(':id_projet'=>$id_projet));
-                                            //     $row_projet=$statement_projet->fetch();
+                                            while ($row_appartenir=$statement_appartenir->fetch())
+                                            {
+                                                $id_projet=$row_projet['id_projet'];
+                                                $query_projet="SELECT * FROM projet WHERE id_projet=:id_projet ";
+                                                $statement_projet=$pdo->prepare($query_projet);
+                                                $statement_projet->execute(array(':id_projet'=>$id_projet));
+                                                $row_projet=$statement_projet->fetch();
 
-                                            //     $id_produit=$row_produit['id_produit'];
-                                            //     $query_produit="SELECT * FROM produit WHERE id_produit=:id_produit ";
-                                            //     $statement_produit=$pdo->prepare($query_produit);
-                                            //     $statement_produit->execute(array(':id_produit'=>$id_produit));
-                                            //     $row_produit=$statement_produit->fetch();
+                                                $id_produit=$row_produit['id_produit'];
+                                                $query_produit="SELECT * FROM produit WHERE id_produit=:id_produit ";
+                                                $statement_produit=$pdo->prepare($query_produit);
+                                                $statement_produit->execute(array(':id_produit'=>$id_produit));
+                                                $row_produit=$statement_produit->fetch();
                                                 
 
-                                            //     echo "<tr>";
-                                            //     echo "<td><p class='c_name'>".$row_appartenir['nom_appartenir'];
-                                            //     echo "<td><span class='email'>".$row_utilisateur['email_utilisateur']."</span></td>";
-                                            //     echo "<td><i class=''></i>".$row_projet['nom_projet']."</td>";
-                                            //     echo "<td><i class=''></i>".$row_produit['libelle_produit']."</td>";
-                                            //     echo "<td><i class=''></i>".$row_quantite_commandee['quantite_produit']."</td>";
-                                            //     echo "<td><i class=''></i>".$row_quantite_livree['quantite_produit']."</td>";
+                                                echo "<tr>";
+                                                echo "<td><p class='c_name'>".$row_appartenir['nom_appartenir'];
+                                                echo "<td><span class='email'>".$row_utilisateur['email_utilisateur']."</span></td>";
+                                                echo "<td><i class=''></i>".$row_projet['nom_projet']."</td>";
+                                                echo "<td><i class=''></i>".$row_produit['libelle_produit']."</td>";
+                                                echo "<td><i class=''></i>".$row_quantite_commandee['quantite_produit']."</td>";
+                                                echo "<td><i class=''></i>".$row_quantite_livree['quantite_produit']."</td>";
 
 
-                                            //     echo "<td><a class='btn btn-info'>Modifier</a> <a class='btn btn-danger' href='delete/delete_utilisateur.php?id_appartenir=$row_appartenir[id_appartenir]\" onClick=\"return confirm('Voulez-vous vraiment supprimer cet appartenir ?')\'>Supprimer</a></td>";
-                                            //     //echo"<td>  </td>";
-                                            //     echo "</tr>";
+                                                echo "<td><a class='btn btn-info'>Modifier</a> <a class='btn btn-danger' href='delete/delete_utilisateur.php?id_appartenir=$row_appartenir[id_appartenir]\" onClick=\"return confirm('Voulez-vous vraiment supprimer cet appartenir ?')\'>Supprimer</a></td>";
+                                                //echo"<td>  </td>";
+                                                echo "</tr>";
 
 
                                                 //echo "<td><a class='btn btn-info'><a class='btn btn-info'></i></button><a href=\"delete\delete_utilisateur.php?id_utilisateur=$row_utilisateur[id_utilisateur]\" onClick=\"return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')\"><a class='btn btn-info'><a class='btn btn-info'></i></button></td>";
@@ -261,7 +260,7 @@ include "assets/php/query.php";
 
                        
 
-                                            // }
+                                            }
 
                                     ?>
 
@@ -287,7 +286,7 @@ include "assets/php/query.php";
 	<footer class="footer">
       <div class="container">
         <div class="text-center">
-          Copyright © 2020 GCS Project
+          Copyright ï¿½ 2020 GCS Project
         </div>
       </div>
     </footer>

@@ -6,9 +6,8 @@ function logged_only(){
     		session_start();
     	}
 
-    if (!isset($_SESSION['nom_utilisateur']) || !isset($_SESSION['email_utilisateur'])) {
-    	var_dump($_SESSION);
-                exit();
+    if (!isset($_SESSION['nom_utilisateur']) || (!isset($_SESSION['email_utilisateur']))) {
+
         $_SESSION['flash']['danger'] = "Vous n'avez pas le droit";
         echo '<script> document.location.replace("index.html"); </script>';
         exit();

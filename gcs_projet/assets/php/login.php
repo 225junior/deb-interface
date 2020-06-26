@@ -1,7 +1,11 @@
 <?php
-#accessible seulement a celui qui est connecté si tu es connecté
-//connexion base de données
+#accessible seulement a celui qui est connectï¿½ si tu es connectï¿½
+//connexion base de donnï¿½es
 include("config.php");
+if (session_status() == PHP_SESSION_NONE)
+    	{
+    		session_start();
+    	}
 //On verifie que l'utilisateur appuie sur le button de connexion
 if(isset($_POST['login']))
 {
@@ -58,7 +62,7 @@ if(isset($_POST['login']))
 
              ?>        
              <script type="text/javascript">
-                alert('Compte inexistant, Veuillez créer un compte svp!');
+                alert('Compte inexistant, Veuillez crï¿½er un compte svp!');
                 setTimeout(function(){window.location.href="../../index.html";},1000);
              </script>
              <?php
@@ -87,7 +91,7 @@ if(isset($_POST['login']))
 }else{
     ?>
      <script type="text/javascript">
-        alert('Connectez Vous pour acceder à la plateforme');
+        alert('Connectez Vous pour acceder ï¿½ la plateforme');
         setTimeout(function(){window.location.href="../../login.html";},100);
      </script>
      <?php
