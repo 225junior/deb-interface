@@ -246,7 +246,7 @@ hr {
 }
 
 #sidebar-wrapper {
-  background-color: rgba(0,0,0,.2);
+  background:linear-gradient(to left, rgb(22, 220, 115),rgb(7, 107, 79));
   position: fixed;
   top: 0px;
   left: 0px;
